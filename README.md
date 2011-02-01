@@ -1,7 +1,7 @@
 Timelapse Calculator
 ====================
 
-<http://sighmon.com/timelapse-calculator>
+<http://sighmon.com/timelapse-helper>
 
 Copyright (c) 2011, Simon Loffler
 All rights reserved.
@@ -13,7 +13,7 @@ GPL license.
 Description
 -----------
 
-The Timelapse Calculator iPhone app is a neat companion for anyone interested in timelapse photography.
+The Timelapse Helper iPhone app is a companion for anyone interested in timelapse photography.
 
 It's a simple app to help you calculate the shooting time needed to create timelapse footage of a desired playback duration.
 
