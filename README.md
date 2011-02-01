@@ -1,4 +1,4 @@
-Timelapse Calculator
+Timelapse Helper
 ====================
 
 <http://sighmon.com/timelapse-helper>
@@ -19,7 +19,7 @@ It's a simple app to help you calculate the shooting time needed to create timel
 
 Set the interval time (in seconds) between photos, the frames per second that you'd like in the finished video and the app does the math for you.
 
-There's even a neat little email button to send your calculations to your friends or camera crew.
+There's even a little email button to send your calculations to your friends or camera crew.
 
 Based on the original Python code for PC written by Dan Thompson, this iPhone app is FREE software released under a GPL license.
 
