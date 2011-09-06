@@ -28,10 +28,18 @@
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	UIWebView *creditsView;
+    IBOutlet UITextField *intervalFieldSetting;
+    IBOutlet UITextField *shotsFieldSetting;
+    IBOutlet UITextField *fpsFieldSetting;
 }
+
+// TODO: implement fields updating default fields.
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UIWebView *creditsView;
+@property (nonatomic, retain) IBOutlet UITextField *intervalFieldSetting;
+@property (nonatomic, retain) IBOutlet UITextField *shotsFieldSetting;
+@property (nonatomic, retain) IBOutlet UITextField *fpsFieldSetting;
 
 - (IBAction)done:(id)sender;
 

@@ -32,6 +32,7 @@
 @implementation MainViewController
 
 @synthesize intervalField, shotsField, fpsField;
+// @synthesize intervalSelectedImage;
 @synthesize shootingPicker, shootingDuration, shootingDays, shootingHours, shootingMinutes, shootingSeconds;
 @synthesize playbackPicker, playbackDuration, playbackHours, playbackMinutes, playbackSeconds, playbackFrames;
 
@@ -67,7 +68,7 @@
 	
 	NSDictionary *dictionary2 = [[NSDictionary alloc] initWithContentsOfFile: plistPath2];
 	self.playbackDuration = dictionary2;
-	[dictionary release];
+	[dictionary2 release];
 	
 	NSArray *playbackFramesArray = [playbackDuration objectForKey: @"Frames"];
 	self.playbackFrames = playbackFramesArray;
@@ -84,78 +85,7 @@
 	// Reset all values
 	
 	[self resetAll:self];
-	/*
-	// Code to add the doneButton to the keypad
-	// From: http://www.neoos.ch/news/46-development/54-uikeyboardtypenumberpad-and-the-missing-return-key
-	// add observer for the respective notifications (depending on the os version)
-	
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(keyboardDidShow:) 
-													 name:UIKeyboardDidShowNotification 
-												   object:nil];		
-	} else {
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(keyboardWillShow:) 
-													 name:UIKeyboardWillShowNotification 
-												   object:nil];
-	}
-	*/
 }
-/*
-- (void)addButtonToKeyboard {
-	
-	// create custom button
-	UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	doneButton.frame = CGRectMake(0, 163, 106, 53);
-	doneButton.adjustsImageWhenHighlighted = NO;
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.0) {
-		[doneButton setImage:[UIImage imageNamed:@"DoneUp3.png"] forState:UIControlStateNormal];
-		[doneButton setImage:[UIImage imageNamed:@"DoneDown3.png"] forState:UIControlStateHighlighted];
-	} else {        
-		[doneButton setImage:[UIImage imageNamed:@"DoneUp.png"] forState:UIControlStateNormal];
-		[doneButton setImage:[UIImage imageNamed:@"DoneDown.png"] forState:UIControlStateHighlighted];
-	}
-	[doneButton addTarget:self action:@selector(doneButton:) forControlEvents:UIControlEventTouchUpInside];
-	// locate keyboard view
-	UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];
-	UIView* keyboard;
-	for(int i=0; i<[tempWindow.subviews count]; i++) {
-		keyboard = [tempWindow.subviews objectAtIndex:i];
-		// keyboard found, add the button
-		if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {
-			if([[keyboard description] hasPrefix:@"<UIPeripheralHost"] == YES)
-				[keyboard addSubview:doneButton];
-		} else {
-			if([[keyboard description] hasPrefix:@"<UIKeyboard"] == YES)
-				[keyboard addSubview:doneButton];
-		}
-	}
-}
-
-- (void)keyboardWillShow:(NSNotification *)note {
-	// if clause is just an additional precaution, you could also dismiss it
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] < 3.2) {
-		[self addButtonToKeyboard];
-	}
-}
-
-- (void)keyboardDidShow:(NSNotification *)note {
-	// if clause is just an additional precaution, you could also dismiss it
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {
-		[self addButtonToKeyboard];
-    }
-}
-
-- (void)doneButton:(id)sender {
-	
-	[self updateSettingsScript];
-	
-    [intervalField resignFirstResponder];
-	[shotsField resignFirstResponder];
-	[fpsField resignFirstResponder];
-}
-*/
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
     
@@ -180,11 +110,13 @@
 
 - (IBAction)resetAll:(id)sender
 {
-	// reset the fields to their default setting
+	// read the default settings & reset the fields
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	intervalField.text = @"60";
-	shotsField.text = @"0";
-	fpsField.text = @"25";
+	intervalField.text = [defaults objectForKey: kIntervalField];
+	shotsField.text = [defaults objectForKey: kShotsField];
+	fpsField.text = [defaults objectForKey: kFpsField];
 	
 	[self updateSettingsScript];
 }
@@ -239,17 +171,6 @@
 	
 	[picker setSubject:@"Timelapse Calculations"];
 	
-	
-	// Set up recipients
-	// NSArray *toRecipients = [NSArray arrayWithObject:@"first@example.com"]; 
-	
-	// [picker setToRecipients:toRecipients];
-	
-	// Attach an image to the email
-	// NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
-	// NSData *myData = [NSData dataWithContentsOfFile:path];
-	// [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"rainy"];
-	
 	// Fill out the email body text
 	NSString *emailBody = [[NSString alloc] initWithFormat: @"Shooting duration of %@ shots at an interval of %@ seconds will be %@. \n\nPlayback duration of %@ shots at %@ frames per second will be %@.", shotsField.text, intervalField.text, 
 						   [self stringFromDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andFrames:0], shotsField.text, fpsField.text, 
@@ -267,49 +188,8 @@
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc. that aren't in use.
-}
-
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)dealloc {
-	
-	[shootingPicker release];
-	[shootingDuration release];
-	[shootingDays release];
-	[shootingHours release];
-	[shootingMinutes release];
-	[shootingSeconds release];
-	
-	[playbackPicker release];
-	[playbackDuration release];
-	[playbackHours release];
-	[playbackMinutes release];
-	[playbackSeconds release];
-	[playbackFrames release];
-	
-    [super dealloc];
-}
-
-- (void)calcRealTimeWithShots: (int) shots andInterval: (int) interval
+- (void)calcRealTimeWithShots: (int) shots 
+                  andInterval: (int) interval
 {
 	if (interval > 0)
 	{
@@ -334,7 +214,8 @@
 		
 }
 
-- (void)calcPlaybackTimeWithShots: (int) shots andPlaybackFPS: (int) playbackFPS
+- (void)calcPlaybackTimeWithShots: (int) shots 
+                   andPlaybackFPS: (int) playbackFPS
 {
 	if (playbackFPS > 0)
 	{
@@ -358,8 +239,12 @@
 	}
 }
 
-- (void)playbackCentricWithHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs 
-					   andFrames: (int) frames andInterval: (int) interval andFPS: (int) fps
+- (void)playbackCentricWithHours: (int) hrs 
+                      andMinutes: (int) mins 
+                      andSeconds: (int) secs 
+					   andFrames: (int) frames 
+                     andInterval: (int) interval 
+                          andFPS: (int) fps
 {
 	int shots = (hrs * (60 * 60 * fps)) + (mins * (60*fps)) + (secs * fps) + frames;
 	
@@ -370,8 +255,12 @@
 	[updatedShotsValue release];
 }
 
-- (void)shootCentricWithDays: (int) days andHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs 
-				 andInterval: (int) interval andPlaybackFPS: (int) playbackFPS
+- (void)shootCentricWithDays: (int) days 
+                    andHours: (int) hrs 
+                  andMinutes: (int) mins 
+                  andSeconds: (int) secs 
+				 andInterval: (int) interval 
+              andPlaybackFPS: (int) playbackFPS
 {
 	int seconds = (days * 24 * 60 * 60) + (hrs * 60 * 60) + (mins * 60) + secs;
 	int shots = seconds / interval;
@@ -386,20 +275,17 @@
 - (void)updateSettingsScript
 {
 	if ([intervalField.text intValue] > 0 || [fpsField.text intValue] > 0) {
-		[self calcRealTimeWithShots:[shotsField.text intValue] andInterval:[intervalField.text intValue]];
-		[self calcPlaybackTimeWithShots:[shotsField.text intValue] andPlaybackFPS:[fpsField.text intValue]];
+		[self calcRealTimeWithShots:[shotsField.text intValue] 
+                        andInterval:[intervalField.text intValue]];
+		[self calcPlaybackTimeWithShots:[shotsField.text intValue] 
+                         andPlaybackFPS:[fpsField.text intValue]];
 		
 		NSMutableArray *p = [[NSMutableArray alloc] init];
 		for (int i = 0; i < [fpsField.text intValue]; ++i) {
 			NSString *s = [[NSString alloc] initWithFormat:@"%d", i];
 			[p addObject: s];
 			[s release];
-		}
-		/*
-		self.playbackFrames = [NSArray arrayWithArray:p];
-		[p release];
-		*/
-		
+		}		
 		
 		NSArray *a = [[NSArray alloc] initWithArray:p];
 		[p release];
@@ -557,27 +443,6 @@
 	else return nil;
 }
 
-// Custom pickerView to get the font to fit with double digits
-/*
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    switch(component) {
-			case 0: return 36;
-			break;
-			case 1: return 36;
-			break;
-			case 2: return 36;
-			break;
-			case 3: return 36;
-			break;
-        default: return 36;
-			break;
-    }
-	
-    //NOT REACHED
-    return 36;
-}
- */
-
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
 	UILabel *retval = (id)view;
 	if (!retval) {
@@ -593,7 +458,7 @@
 }
 
 #pragma mark -
-#pragma mark Picker Math
+#pragma mark Picker Update
 
 -(void) pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger) row inComponent: (NSInteger) component
 {
@@ -619,5 +484,83 @@
 	return YES;
 }
 */
+
+#pragma mark -
+#pragma mark Tap Detection
+
+/*
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	UITouch *touch = [touches anyObject];
+	NSUInteger tapCount = [touch tapCount];
+	
+	if (tapCount > 1) {
+        
+        // Toggle the 'intervalSelectedImage' from blank to red
+        
+        if (intervalToggle) {
+            intervalToggle = NO;
+        } else {
+            intervalToggle = YES;
+        }
+    }
+    
+}
+
+- (void)toggleIntervalSelectedImage {
+    if (intervalToggle) {
+        // Change image
+        intervalField.text = @"hello";
+    } else {
+        intervalField.text = @"5";
+    }
+}
+*/
+
+#pragma mark -
+#pragma mark Memory
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc. that aren't in use.
+}
+
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+    // [intervalSelectedImage release];
+    // intervalSelectedImage = nil;
+}
+
+
+/*
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations.
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
+
+- (void)dealloc {
+	
+	[shootingPicker release];
+	[shootingDuration release];
+	[shootingDays release];
+	[shootingHours release];
+	[shootingMinutes release];
+	[shootingSeconds release];
+	
+	[playbackPicker release];
+	[playbackDuration release];
+	[playbackHours release];
+	[playbackMinutes release];
+	[playbackSeconds release];
+	[playbackFrames release];
+	
+    // [intervalSelectedImage release];
+    [super dealloc];
+}
 
 @end

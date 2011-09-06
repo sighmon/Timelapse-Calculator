@@ -33,11 +33,18 @@
 #define kPlaybackSeconds	2
 #define kPlaybackFrames		3
 
+#define kIntervalField      @"interval"
+#define kShotsField         @"shots"
+#define kFpsField           @"fps"
+
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate>
 {
 	IBOutlet UITextField *intervalField;
 	IBOutlet UITextField *shotsField;
 	IBOutlet UITextField *fpsField;
+    // Not sure about these two??
+    // IBOutlet UIImageView *intervalSelectedImage;
+    // BOOL intervalToggle;
 	
 	IBOutlet UIPickerView *shootingPicker;
 	IBOutlet UIPickerView *playbackPicker;
@@ -58,6 +65,7 @@
 @property (nonatomic, retain) UITextField *intervalField;
 @property (nonatomic, retain) UITextField *shotsField;
 @property (nonatomic, retain) UITextField *fpsField;
+// @property (nonatomic, retain) UIImageView *intervalSelectedImage;
 
 @property (nonatomic, retain) UIPickerView *shootingPicker;
 @property (nonatomic, retain) NSDictionary *shootingDuration;
@@ -80,14 +88,24 @@
 - (IBAction)textFieldDoneEditing:(id)sender;
 - (IBAction)backgroundClick:(id)sender;
 
-- (void)calcRealTimeWithShots: (int) shots andInterval: (int) interval;
-- (void)calcPlaybackTimeWithShots: (int) shots andPlaybackFPS: (int) playbackFPS;
+- (void)calcRealTimeWithShots: (int) shots 
+                  andInterval: (int) interval;
+- (void)calcPlaybackTimeWithShots: (int) shots 
+                   andPlaybackFPS: (int) playbackFPS;
 
-- (void)playbackCentricWithHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs 
-					   andFrames: (int) frames andInterval: (int) interval andFPS: (int) fps;
+- (void)playbackCentricWithHours: (int) hrs 
+                      andMinutes: (int) mins 
+                      andSeconds: (int) secs 
+					   andFrames: (int) frames 
+                     andInterval: (int) interval 
+                          andFPS: (int) fps;
 
-- (void)shootCentricWithDays: (int) days andHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs 
-				 andInterval: (int) interval andPlaybackFPS: (int) playbackFPS;
+- (void)shootCentricWithDays: (int) days 
+                    andHours: (int) hrs 
+                  andMinutes: (int) mins 
+                  andSeconds: (int) secs 
+				 andInterval: (int) interval 
+              andPlaybackFPS: (int) playbackFPS;
 
 - (void)updateSettingsScript;
 - (void)updatePlaybackScript;

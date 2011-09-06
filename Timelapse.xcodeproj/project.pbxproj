@@ -16,6 +16,9 @@
 		05183D1B12E9612600D9A32E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1412E9612500D9A32E /* Icon.png */; };
 		05183D1C12E9612600D9A32E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1512E9612500D9A32E /* Icon@2x.png */; };
 		05183D1D12E9612600D9A32E /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1612E9612500D9A32E /* iTunesArtwork.png */; };
+		052560B613E0186500D64428 /* blank-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 052560B413E0186500D64428 /* blank-dot.png */; };
+		052560B713E0186500D64428 /* red-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 052560B513E0186500D64428 /* red-dot.png */; };
+		05259BE113D2C39D00FEA7B3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05259BE013D2C39D00FEA7B3 /* Settings.bundle */; };
 		052EE1A712E00BE400292760 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1A412E00BE400292760 /* credits.html */; };
 		052EE1ED12E013D800292760 /* si.png in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1EB12E013D800292760 /* si.png */; };
 		0576B41112E7D9BA00E4E689 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0576B40F12E7D9BA00E4E689 /* Default.png */; };
@@ -54,6 +57,9 @@
 		05183D1412E9612500D9A32E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		05183D1512E9612500D9A32E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		05183D1612E9612500D9A32E /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		052560B413E0186500D64428 /* blank-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank-dot.png"; sourceTree = "<group>"; };
+		052560B513E0186500D64428 /* red-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-dot.png"; sourceTree = "<group>"; };
+		05259BE013D2C39D00FEA7B3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		052EE1A412E00BE400292760 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
 		052EE1EB12E013D800292760 /* si.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = si.png; path = ../si.png; sourceTree = "<group>"; };
 		0576B40F12E7D9BA00E4E689 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				05259BE013D2C39D00FEA7B3 /* Settings.bundle */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
@@ -193,6 +200,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				052560B413E0186500D64428 /* blank-dot.png */,
+				052560B513E0186500D64428 /* red-dot.png */,
 				059033A412F1288D00B76180 /* Icons */,
 				0590333012F0F00A00B76180 /* lens-background.png */,
 				0590343F12F13E3900B76180 /* lens-background@2x.png */,
@@ -249,6 +258,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Timelapse" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -301,6 +313,9 @@
 				0590343C12F13E2900B76180 /* pix@2x.png in Resources */,
 				0590344112F13E3900B76180 /* lens-background@2x.png in Resources */,
 				0590344212F13E3900B76180 /* si@2x.png in Resources */,
+				05259BE113D2C39D00FEA7B3 /* Settings.bundle in Resources */,
+				052560B613E0186500D64428 /* blank-dot.png in Resources */,
+				052560B713E0186500D64428 /* red-dot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +346,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = Timelapse;
 			};
 			name = Debug;
@@ -343,6 +359,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = Timelapse;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -357,7 +374,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FE53B784-E5B1-4D3D-BAA9-77F2F622309A";
 				SDKROOT = iphoneos;
 			};
@@ -373,7 +389,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FE53B784-E5B1-4D3D-BAA9-77F2F622309A";
 				SDKROOT = iphoneos;
 			};

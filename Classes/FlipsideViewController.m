@@ -20,17 +20,25 @@
 //
 
 #import "FlipsideViewController.h"
+#import "MainViewController.h"
 
 
 @implementation FlipsideViewController
 
-@synthesize delegate, creditsView;
+@synthesize delegate, creditsView, intervalFieldSetting, shotsFieldSetting, fpsFieldSetting;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    
+    // Load the default user settings
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    intervalFieldSetting.text = [defaults objectForKey:kIntervalField];
+    shotsFieldSetting.text = [defaults objectForKey:kShotsField];
+    fpsFieldSetting.text = [defaults objectForKey:kFpsField];
 	
 	// self.creditsView.scalesPageToFit = YES;
 	creditsView.delegate = self;
@@ -44,12 +52,6 @@
 	
 	NSString *htmlString = [[NSString alloc] initWithData: 
 							[readHandle readDataToEndOfFile] encoding:NSUTF8StringEncoding];
-	
-	// to make html content transparent to its parent view -
-	// 1) set the webview's backgroundColor property to [UIColor clearColor]
-	// 2) use the content in the html: <body style="background-color: transparent">
-	// 3) opaque property set to NO
-	//
 	creditsView.opaque = NO;
 	creditsView.backgroundColor = [UIColor clearColor];
 	[self.creditsView loadHTMLString:htmlString baseURL:baseURL];
@@ -58,6 +60,10 @@
 
 
 - (IBAction)done:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:intervalFieldSetting.text forKey:kIntervalField];
+    [defaults setValue:shotsFieldSetting.text forKey:kShotsField];
+    [defaults setValue:fpsFieldSetting.text forKey:kFpsField];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -71,6 +77,12 @@
 
 
 - (void)viewDidUnload {
+    [fpsFieldSetting release];
+    fpsFieldSetting = nil;
+    [shotsFieldSetting release];
+    shotsFieldSetting = nil;
+    [intervalFieldSetting release];
+    intervalFieldSetting = nil;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
@@ -97,6 +109,9 @@
 
 - (void)dealloc {
 	[creditsView release];
+    [intervalFieldSetting release];
+    [shotsFieldSetting release];
+    [fpsFieldSetting release];
     [super dealloc];
 }
 
