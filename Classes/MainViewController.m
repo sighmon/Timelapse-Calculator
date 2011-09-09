@@ -110,7 +110,14 @@
 
 - (IBAction)resetAll:(id)sender
 {
-	// read the default settings & reset the fields
+	// read default settings if this is the first run
+    
+    [self registerDefaultsFromSettingsBundle];
+    intervalField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"interval"];
+    shotsField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"shots"];
+    fpsField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"fps"];
+    
+    // read the default settings & reset the fields
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
@@ -484,6 +491,31 @@
 	return YES;
 }
 */
+
+#pragma mark -
+#pragma mark Read settings first run
+
+- (void)registerDefaultsFromSettingsBundle {
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    [defaultsToRegister release];
+}
 
 #pragma mark -
 #pragma mark Tap Detection

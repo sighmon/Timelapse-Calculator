@@ -111,6 +111,8 @@
 - (void)updatePlaybackScript;
 - (void)updateShootingScript;
 
+- (void)registerDefaultsFromSettingsBundle;
+
 - (NSString *)stringFromDays: (int) days andHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs andFrames: (int) frames;
 
 @end
