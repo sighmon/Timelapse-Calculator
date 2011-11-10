@@ -32,7 +32,8 @@
 @implementation MainViewController
 
 @synthesize intervalField, shotsField, fpsField;
-// @synthesize intervalSelectedImage;
+@synthesize intervalSelectedImage;
+@synthesize intervalToggle;
 @synthesize shootingPicker, shootingDuration, shootingDays, shootingHours, shootingMinutes, shootingSeconds;
 @synthesize playbackPicker, playbackDuration, playbackHours, playbackMinutes, playbackSeconds, playbackFrames;
 
@@ -40,6 +41,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    // Set the interval toggle to NO
+    intervalToggle = NO;
 	
 	// Shooting wheel setup
 	
@@ -94,13 +98,15 @@
 
 - (IBAction)textFieldDoneEditing:(id)sender
 {
+    // TODO: add an if intervalToggle statement here.
 	[self updateSettingsScript];
 	
 	[sender resignFirstResponder];
 }
 
 - (IBAction)backgroundClick:(id)sender
-{	
+{
+	// TODO: add an if intervalToggle statement here.
 	[self updateSettingsScript];
 	
 	[intervalField resignFirstResponder];
@@ -195,6 +201,9 @@
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+#pragma mark -
+#pragma mark The Calculation Math
+
 - (void)calcRealTimeWithShots: (int) shots 
                   andInterval: (int) interval
 {
@@ -277,6 +286,36 @@
 	NSString *updatedShotsValue = [[NSString alloc] initWithFormat:@"%d", shots];
 	shotsField.text = updatedShotsValue;
 	[updatedShotsValue release];
+}
+
+- (void)intervalCentricWithDays: (int) days 
+                       andHours: (int) hrs 
+                     andMinutes: (int) mins 
+                     andSeconds: (int) secs 
+                       andShots: (int) shots
+{
+    // TODO: check this is right before release
+    int seconds = (days * 24 * 60 * 60) + (hrs * 60 * 60) + (mins * 60) + secs;
+    int interval = seconds / shots;
+    
+    NSString *updatedIntervalValue = [[NSString alloc] initWithFormat:@"%d", interval];
+    intervalField.text = updatedIntervalValue;
+    [updatedIntervalValue release];
+}
+
+- (void)intervalCentricPlaybackWithHours:(int)hrs 
+                              andMinutes:(int)mins 
+                              andSeconds:(int)secs 
+                               andFrames:(int)frames 
+                                  andFPS:(int)fps
+{
+    // TODO: check this is right before release
+    int totalPlaybackSeconds = (hrs * 60 * 60) + (mins * 60) + secs;
+    int shots = totalPlaybackSeconds * fps;
+    
+    NSString *updatedShotsValue = [[NSString alloc] initWithFormat:@"%d", shots];
+    shotsField.text = updatedShotsValue;
+    [updatedShotsValue release];    
 }
 
 - (void)updateSettingsScript
@@ -368,6 +407,26 @@
 	}
 }
 
+- (void)updateIntervalShootingScript 
+{
+    if ([shotsField.text intValue] > 0) {
+        // TODO: check this is right before release
+        [self intervalCentricWithDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andShots:[shotsField.text intValue]];
+    } else {
+        intervalField.text = @"0";
+    }
+}
+
+- (void)updateIntervalPlaybackScript
+{
+    if ([shotsField.text intValue] > 0) {
+        // TODO: make an updateIntervalPlaybackScript
+        [self intervalCentricPlaybackWithHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames] andFPS:[fpsField.text intValue]];
+    } else {
+        intervalField.text = @"0";
+    }
+}
+
 #pragma mark -
 #pragma mark Picker Data Source Methods
 
@@ -450,6 +509,8 @@
 	else return nil;
 }
 
+// Hack to get the number fonts to look nice on the pickers.
+
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
 	UILabel *retval = (id)view;
 	if (!retval) {
@@ -469,15 +530,30 @@
 
 -(void) pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger) row inComponent: (NSInteger) component
 {
-	if (pickerView == playbackPicker) {
-		[self updatePlaybackScript];
-	} else {
-		if (pickerView == shootingPicker) {
-			[self updateShootingScript];
-		} else {
-			return;
-		}
-	}
+    // TODO: Fix interval script
+	if (intervalToggle == YES) {
+        if (pickerView == playbackPicker) {
+            [self updateIntervalPlaybackScript];
+            [self updateSettingsScript];
+        } else {
+            if (pickerView == shootingPicker) {
+                [self updateIntervalShootingScript];
+                [self updateSettingsScript];
+            } else {
+                return;
+            }
+        }
+    } else {
+        if (pickerView == playbackPicker) {
+            [self updatePlaybackScript];
+        } else {
+            if (pickerView == shootingPicker) {
+                [self updateShootingScript];
+            } else {
+                return;
+            }
+        }
+    }
 }
 
 #pragma mark -
@@ -520,33 +596,30 @@
 #pragma mark -
 #pragma mark Tap Detection
 
-/*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
 	NSUInteger tapCount = [touch tapCount];
 	
 	if (tapCount > 1) {
         
-        // Toggle the 'intervalSelectedImage' from blank to red
+        // If more than one tap, then toogleIntervalSelected
         
-        if (intervalToggle) {
-            intervalToggle = NO;
-        } else {
-            intervalToggle = YES;
-        }
+        [self toggleIntervalSelected];
     }
     
 }
 
-- (void)toggleIntervalSelectedImage {
-    if (intervalToggle) {
+- (void)toggleIntervalSelected {
+    if (intervalToggle == NO) {
         // Change image
-        intervalField.text = @"hello";
+        intervalSelectedImage.image = [UIImage imageNamed:@"red-dot.png"];
+        intervalToggle = YES;
     } else {
-        intervalField.text = @"5";
+        intervalSelectedImage.image = [UIImage imageNamed:@"blank-dot.png"];
+        intervalToggle = NO;
     }
 }
-*/
+
 
 #pragma mark -
 #pragma mark Memory
@@ -591,7 +664,7 @@
 	[playbackSeconds release];
 	[playbackFrames release];
 	
-    // [intervalSelectedImage release];
+    [intervalSelectedImage release];
     [super dealloc];
 }
 
