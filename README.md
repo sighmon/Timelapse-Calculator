@@ -1,18 +1,18 @@
-Timelapse Helper
-====================
-
+# TIMELAPSE HELPER
 <http://sighmon.com/timelapse-helper>
 
-Copyright (c) 2011, Simon Loffler
-All rights reserved.
+## What's New?
+Version 0.2
 
-This software is made available under the terms of the simplified
-GPL license.
+* Beta feature: Double-tap the bottom bar to enter 'Interval calculator' mode.
+* User-editable default settings on info screen.
+* App settings added.
 
+### Interval Calculator mode
+This is a test feature I've added so you can calculate the Interval time (time in seconds between photos) by spinning the Shooting wheel. You'll notice that as you spin the wheel, the calculator automatically adjusts it to the closest shooting time available. This is because you can't select part seconds for the interval.
+If you notice any strange things, or have any suggestions for improvements, please email me <sighmon(at)sighmon.com>
 
-Description
------------
-
+## Description
 The Timelapse Helper iPhone app is a companion for anyone interested in timelapse photography.
 
 It's a simple app to help you calculate the shooting time needed to create timelapse footage of a desired playback duration.
@@ -26,3 +26,10 @@ Based on the original Python code for PC written by Dan Thompson, this iPhone ap
 Written and designed by Simon Loffler.
 
 Special thanks to Pix for his help with optimisation and bug fixes.
+
+## Copyright
+Copyright (c) 2011, Simon Loffler
+All rights reserved.
+
+## License
+This software is made available under the terms of the simplified GPL license.

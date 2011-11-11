@@ -363,14 +363,16 @@
 					armv6,
 					armv7,
 				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Simon Loffler";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Simon Loffler";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PRODUCT_NAME = Timelapse;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "FB2109BC-E142-4F42-A287-46497DB21D2B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB2109BC-E142-4F42-A287-46497DB21D2B";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -393,12 +395,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Simon Loffler";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Simon Loffler";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "FB2109BC-E142-4F42-A287-46497DB21D2B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FE53B784-E5B1-4D3D-BAA9-77F2F622309A";
 				SDKROOT = iphoneos;
 			};
