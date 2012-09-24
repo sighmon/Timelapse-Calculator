@@ -37,7 +37,9 @@
     // Override point for customization after application launch.  
 
     // Add the main view controller's view to the window and display.
-    [self.window addSubview:mainViewController.view];
+    // [self.window addSubview:mainViewController.view];
+    // Was complaining about not having a RootViewController, so lets set that instead.
+    [self.window setRootViewController:mainViewController];
     [self.window makeKeyAndVisible];
 
     return YES;

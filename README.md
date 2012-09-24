@@ -2,6 +2,10 @@
 <http://sighmon.com/timelapse-helper>
 
 ## What's New?
+Version 0.3
+
+* Compatible with iPhone 5.
+
 Version 0.2
 
 * Beta feature: Double-tap the bottom bar to enter 'Interval calculator' mode.
