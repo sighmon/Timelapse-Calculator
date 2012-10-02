@@ -36,6 +36,7 @@
 #define kIntervalField      @"interval"
 #define kShotsField         @"shots"
 #define kFpsField           @"fps"
+#define kToggleField        @"defaultIntervalToggle"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MFMailComposeViewControllerDelegate>
 {
@@ -131,5 +132,6 @@
 - (NSString *)stringFromDays: (int) days andHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs andFrames: (int) frames;
 
 - (void)toggleIntervalSelected;
+- (void)checkIntervalSelectedImage;
 
 @end

@@ -43,7 +43,9 @@
 	[super viewDidLoad];
     
     // Set the interval toggle to NO
-    intervalToggle = NO;
+    // intervalToggle = NO;
+    
+    // Interval toggle will now be loaded from settings defaults.
 	
 	// Shooting wheel setup
 	
@@ -94,6 +96,7 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
     
 	[self dismissModalViewControllerAnimated:YES];
+    [self resetAll:self];
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender
@@ -119,9 +122,10 @@
 	// read default settings if this is the first run
     
     [self registerDefaultsFromSettingsBundle];
-    intervalField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"interval"];
-    shotsField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"shots"];
-    fpsField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"fps"];
+    intervalField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kIntervalField];
+    shotsField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kShotsField];
+    fpsField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kFpsField];
+    intervalToggle = [[NSUserDefaults standardUserDefaults] boolForKey:kToggleField];
     
     // read the default settings & reset the fields
     
@@ -130,8 +134,11 @@
 	intervalField.text = [defaults objectForKey: kIntervalField];
 	shotsField.text = [defaults objectForKey: kShotsField];
 	fpsField.text = [defaults objectForKey: kFpsField];
+    intervalToggle = [defaults boolForKey:kToggleField];
 	
 	[self updateSettingsScript];
+    // Check that the Interval Toggle image is correct.
+    [self checkIntervalSelectedImage];
 }
 
 - (IBAction)showInfo:(id)sender {    
@@ -617,6 +624,14 @@
     } else {
         intervalSelectedImage.image = [UIImage imageNamed:@"blank-dot.png"];
         intervalToggle = NO;
+    }
+}
+
+- (void)checkIntervalSelectedImage {
+    if (intervalToggle == YES) {
+        intervalSelectedImage.image = [UIImage imageNamed:@"red-dot.png"];
+    } else {
+        intervalSelectedImage.image = [UIImage imageNamed:@"blank-dot.png"];
     }
 }
 

@@ -2,6 +2,11 @@
 <http://sighmon.com/timelapse-helper>
 
 ## What's New?
+Version 1.0
+
+* Implemented 'Interval Calculator' mode toggle switch in the User Default Settings & info page.
+* Double-tapping the bottom bar still toggles 'Interval Calculator' mode too.
+
 Version 0.3
 
 * Compatible with iPhone 5.

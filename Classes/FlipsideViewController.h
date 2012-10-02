@@ -31,6 +31,7 @@
     IBOutlet UITextField *intervalFieldSetting;
     IBOutlet UITextField *shotsFieldSetting;
     IBOutlet UITextField *fpsFieldSetting;
+    IBOutlet UISwitch *intervalToggleSetting;
 }
 
 // TODO: implement fields updating default fields.
@@ -40,8 +41,10 @@
 @property (nonatomic, retain) IBOutlet UITextField *intervalFieldSetting;
 @property (nonatomic, retain) IBOutlet UITextField *shotsFieldSetting;
 @property (nonatomic, retain) IBOutlet UITextField *fpsFieldSetting;
+@property (nonatomic, retain) IBOutlet UISwitch *intervalToggleSetting;
 
 - (IBAction)done:(id)sender;
+- (IBAction)intervalToggleChanged:(id)sender;
 
 @end
 

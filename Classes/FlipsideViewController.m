@@ -25,7 +25,7 @@
 
 @implementation FlipsideViewController
 
-@synthesize delegate, creditsView, intervalFieldSetting, shotsFieldSetting, fpsFieldSetting;
+@synthesize delegate, creditsView, intervalFieldSetting, shotsFieldSetting, fpsFieldSetting, intervalToggleSetting;
 
 
 - (void)viewDidLoad {
@@ -39,6 +39,11 @@
     intervalFieldSetting.text = [defaults objectForKey:kIntervalField];
     shotsFieldSetting.text = [defaults objectForKey:kShotsField];
     fpsFieldSetting.text = [defaults objectForKey:kFpsField];
+    if ([defaults boolForKey:kToggleField]) {
+        [intervalToggleSetting setOn:YES animated:YES];
+    } else {
+        [intervalToggleSetting setOn:NO animated:YES];
+    }
 	
 	// self.creditsView.scalesPageToFit = YES;
 	creditsView.delegate = self;
@@ -67,6 +72,15 @@
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
+- (IBAction)intervalToggleChanged:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (intervalToggleSetting.on) {
+        [defaults setBool:YES forKey:kToggleField];
+    } else {
+        [defaults setBool:NO forKey:kToggleField];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -77,6 +91,8 @@
 
 
 - (void)viewDidUnload {
+    [intervalToggleSetting release];
+    intervalToggleSetting = nil;
     [fpsFieldSetting release];
     fpsFieldSetting = nil;
     [shotsFieldSetting release];
@@ -112,6 +128,7 @@
     [intervalFieldSetting release];
     [shotsFieldSetting release];
     [fpsFieldSetting release];
+    [intervalToggleSetting release];
     [super dealloc];
 }
 
