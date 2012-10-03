@@ -4,8 +4,8 @@
 ## What's New?
 Version 1.0
 
-* Implemented 'Interval Calculator' mode toggle switch in the User Default Settings & info page.
-* Double-tapping the bottom bar still toggles 'Interval Calculator' mode too.
+* Implemented 'Interval Calculator' mode toggle switch in the User Default Settings & info page. When turned 'on', the app will calculate the interval (in seconds) between photos to shoot a time-lapse of a desired length.
+* To quickly switch between modes, double-tap the Interval label or the bottom bar.
 
 Version 0.3
 

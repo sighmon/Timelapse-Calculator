@@ -211,7 +211,6 @@
 						<string key="NSFrame">{{20, 199}, {280, 241}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<reference key="IBUIBackgroundColor" ref="799553282"/>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -451,6 +450,14 @@
 					<int key="connectionID">83</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">versionNumber</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="753768864"/>
+					</object>
+					<int key="connectionID">86</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">done:</string>
 						<reference key="source" ref="854562692"/>
@@ -657,7 +664,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">85</int>
+			<int key="maxID">86</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -706,6 +713,7 @@
 							<string>intervalFieldSetting</string>
 							<string>intervalToggleSetting</string>
 							<string>shotsFieldSetting</string>
+							<string>versionNumber</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -714,6 +722,7 @@
 							<string>UITextField</string>
 							<string>UISwitch</string>
 							<string>UITextField</string>
+							<string>UILabel</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -725,6 +734,7 @@
 							<string>intervalFieldSetting</string>
 							<string>intervalToggleSetting</string>
 							<string>shotsFieldSetting</string>
+							<string>versionNumber</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -747,6 +757,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">shotsFieldSetting</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">versionNumber</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 						</object>
 					</object>

@@ -101,7 +101,6 @@
 
 - (IBAction)textFieldDoneEditing:(id)sender
 {
-    // TODO: add an if intervalToggle statement here.
 	[self updateSettingsScript];
 	
 	[sender resignFirstResponder];
@@ -109,7 +108,6 @@
 
 - (IBAction)backgroundClick:(id)sender
 {
-	// TODO: add an if intervalToggle statement here.
 	[self updateSettingsScript];
 	
 	[intervalField resignFirstResponder];
@@ -301,7 +299,6 @@
                      andSeconds: (int) secs 
                        andShots: (int) shots
 {
-    // TODO: check this is right before release
     int seconds = (days * 24 * 60 * 60) + (hrs * 60 * 60) + (mins * 60) + secs;
     int interval = seconds / shots;
     
@@ -316,7 +313,6 @@
                                andFrames:(int)frames 
                                   andFPS:(int)fps
 {
-    // TODO: check this is right before release
     int totalPlaybackSeconds = (hrs * 60 * 60) + (mins * 60) + secs;
     int shots = totalPlaybackSeconds * fps;
     
@@ -417,7 +413,6 @@
 - (void)updateIntervalShootingScript 
 {
     if ([shotsField.text intValue] > 0) {
-        // TODO: check this is right before release
         [self intervalCentricWithDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andShots:[shotsField.text intValue]];
     } else {
         intervalField.text = @"0";
@@ -427,7 +422,6 @@
 - (void)updateIntervalPlaybackScript
 {
     if ([shotsField.text intValue] > 0) {
-        // TODO: make an updateIntervalPlaybackScript
         [self intervalCentricPlaybackWithHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames] andFPS:[fpsField.text intValue]];
     } else {
         intervalField.text = @"0";
@@ -537,7 +531,6 @@
 
 -(void) pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger) row inComponent: (NSInteger) component
 {
-    // TODO: Fix interval script
 	if (intervalToggle == YES) {
         if (pickerView == playbackPicker) {
             [self updateIntervalPlaybackScript];
@@ -614,6 +607,10 @@
         [self toggleIntervalSelected];
     }
     
+    // Also make the Interval Label tag tappable (it's tag is set to 1)
+    if (touch.view.tag == 1 && tapCount > 2) {
+        [self toggleIntervalSelected];
+    }
 }
 
 - (void)toggleIntervalSelected {

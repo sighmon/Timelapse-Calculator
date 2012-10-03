@@ -25,7 +25,7 @@
 
 @implementation FlipsideViewController
 
-@synthesize delegate, creditsView, intervalFieldSetting, shotsFieldSetting, fpsFieldSetting, intervalToggleSetting;
+@synthesize delegate, creditsView, intervalFieldSetting, shotsFieldSetting, fpsFieldSetting, intervalToggleSetting, versionNumber;
 
 
 - (void)viewDidLoad {
@@ -44,6 +44,9 @@
     } else {
         [intervalToggleSetting setOn:NO animated:YES];
     }
+    // Calculate the version number from the bundle plist
+    versionNumber.text = [NSString stringWithFormat:@"Version %@ (%@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+
 	
 	// self.creditsView.scalesPageToFit = YES;
 	creditsView.delegate = self;

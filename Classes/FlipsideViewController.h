@@ -32,6 +32,7 @@
     IBOutlet UITextField *shotsFieldSetting;
     IBOutlet UITextField *fpsFieldSetting;
     IBOutlet UISwitch *intervalToggleSetting;
+    IBOutlet UILabel *versionNumber;
 }
 
 // TODO: implement fields updating default fields.
@@ -42,6 +43,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *shotsFieldSetting;
 @property (nonatomic, retain) IBOutlet UITextField *fpsFieldSetting;
 @property (nonatomic, retain) IBOutlet UISwitch *intervalToggleSetting;
+@property (nonatomic, retain) IBOutlet UILabel *versionNumber;
 
 - (IBAction)done:(id)sender;
 - (IBAction)intervalToggleChanged:(id)sender;
