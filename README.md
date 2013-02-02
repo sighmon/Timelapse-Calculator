@@ -2,6 +2,11 @@
 <http://sighmon.com/timelapse-helper>
 
 ## What's New?
+Version 1.1
+
+* Added Crashlytics to see if it's crashing for any of you.
+http://crashlytics.com
+
 Version 1.0
 
 * Implemented 'Interval Calculator' mode toggle switch in the User Default Settings & info page. When turned 'on', the app will calculate the interval (in seconds) between photos to shoot a time-lapse of a desired length.
