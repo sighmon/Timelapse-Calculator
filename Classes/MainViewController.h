@@ -115,11 +115,15 @@
                      andSeconds: (int) secs
                        andShots: (int) shots;
 
-- (void)intervalCentricPlaybackWithHours: (int) hrs
-                              andMinutes: (int) mins
-                              andSeconds: (int) secs 
-                               andFrames: (int) frames
-                                  andFPS: (int) fps;
+- (void)intervalCentricPlaybackWithHours:(int)hrs
+                              andMinutes:(int)mins
+                              andSeconds:(int)secs
+                               andFrames:(int)frames
+                                  andFPS:(int)fps
+                         andShootingDays:(int)shootDays
+                        andShootingHours:(int)shootHrs
+                      andShootingMinutes:(int)shootMins
+                      andShootingSeconds:(int)shootSecs;
 
 - (void)updateSettingsScript;
 - (void)updatePlaybackScript;

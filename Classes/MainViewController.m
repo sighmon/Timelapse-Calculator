@@ -150,6 +150,9 @@
 	[controller release];
 }
 
+#pragma mark -
+#pragma mark - Sharing
+
 - (NSString *)stringFromDays: (int) days andHours: (int) hrs andMinutes: (int) mins andSeconds: (int) secs andFrames: (int) frames
 {
 	NSMutableString *result = [[[NSMutableString alloc] init] autorelease];
@@ -184,20 +187,14 @@
 
 - (IBAction)composeEmail:(id)sender
 {
-	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-	picker.mailComposeDelegate = self;
-	
-	[picker setSubject:@"Timelapse Calculations"];
-	
-	// Fill out the email body text
-	NSString *emailBody = [[NSString alloc] initWithFormat: @"Shooting duration of %@ shots at an interval of %@ seconds will be %@. \n\nPlayback duration of %@ shots at %@ frames per second will be %@.", shotsField.text, intervalField.text, 
-						   [self stringFromDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andFrames:0], shotsField.text, fpsField.text, 
-						   [self stringFromDays:0 andHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames]]];
-	[picker setMessageBody:emailBody isHTML:NO];
-	
-	[self presentModalViewController:picker animated:YES];
-	[picker release];
-	[emailBody release];
+	NSMutableArray *itemsToShare = [[NSMutableArray alloc] initWithArray:@[[NSString stringWithFormat:@"Shooting duration of %@ shots at an interval of %@ seconds will be %@. \n\nPlayback duration of %@ shots at %@ frames per second will be %@.", shotsField.text, intervalField.text,
+                                                                            [self stringFromDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andFrames:0], shotsField.text, fpsField.text,
+                                                                            [self stringFromDays:0 andHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames]]]]];
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    [activityController setValue:@"Timelapse calculations" forKey:@"subject"];
+    [self presentViewController:activityController animated:YES completion:nil];
+    [itemsToShare release];
 }
 
 // Dismisses the email composition interface when users tap Cancel or Send.
@@ -312,9 +309,22 @@
                               andSeconds:(int)secs 
                                andFrames:(int)frames 
                                   andFPS:(int)fps
+                         andShootingDays:(int)shootDays
+                        andShootingHours:(int)shootHrs
+                      andShootingMinutes:(int)shootMins
+                      andShootingSeconds:(int)shootSecs
 {
     int totalPlaybackSeconds = (hrs * 60 * 60) + (mins * 60) + secs;
     int shots = totalPlaybackSeconds * fps;
+    int totalShootingSeconds = (shootDays * 24 * 60 * 60) + (shootHrs * 60 * 60) + (shootMins * 60) + shootSecs;
+    int interval = 0;
+    if (shots > 0) {
+        interval = totalShootingSeconds / shots;
+    }
+    
+    NSString *updatedIntervalValue = [[NSString alloc] initWithFormat:@"%d", interval];
+    intervalField.text = updatedIntervalValue;
+    [updatedIntervalValue release];
     
     NSString *updatedShotsValue = [[NSString alloc] initWithFormat:@"%d", shots];
     shotsField.text = updatedShotsValue;
@@ -422,7 +432,7 @@
 - (void)updateIntervalPlaybackScript
 {
     if ([shotsField.text intValue] > 0) {
-        [self intervalCentricPlaybackWithHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames] andFPS:[fpsField.text intValue]];
+        [self intervalCentricPlaybackWithHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames] andFPS:[fpsField.text intValue] andShootingDays:[shootingPicker selectedRowInComponent:kShootingDays] andShootingHours:[shootingPicker selectedRowInComponent:kShootingHours] andShootingMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andShootingSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds]];
     } else {
         intervalField.text = @"0";
     }
