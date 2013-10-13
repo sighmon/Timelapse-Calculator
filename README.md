@@ -2,6 +2,11 @@
 <http://sighmon.com/timelapse-helper>
 
 ## What's New?
+Version 1.2
+
+* Fixed a bug in 'Interval Calculator' mode where the interval wasn't being calculated when toggling the playback wheel.
+* Updated for iOS 7.
+
 Version 1.1
 
 * Added Crashlytics to see if it's crashing for any of you.

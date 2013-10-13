@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="42">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
                         <navigationItem title="Default settings" id="43">
@@ -35,21 +35,21 @@
                     </items>
                 </navigationBar>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="50">
-                    <rect key="frame" x="113" y="170" width="95" height="21"/>
+                    <rect key="frame" x="113" y="188" width="95" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.93478260869999996" green="0.93478260869999996" blue="0.93478260869999996" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="(seconds)" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="81">
-                    <rect key="frame" x="20" y="107" width="85" height="22"/>
+                    <rect key="frame" x="20" y="125" width="85" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.93478260869999996" green="0.93478260869999996" blue="0.93478260869999996" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="71">
-                    <rect key="frame" x="20" y="44" width="85" height="32"/>
+                    <rect key="frame" x="20" y="62" width="85" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.93478260869999996" green="0.93478260869999996" blue="0.93478260869999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,7 +58,7 @@
                     <size key="shadowOffset" width="0.0" height="2"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Interval calculations:" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="84">
-                    <rect key="frame" x="7" y="133" width="196" height="32"/>
+                    <rect key="frame" x="7" y="151" width="196" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.93478260869999996" green="0.93478260869999996" blue="0.93478260869999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,7 +67,7 @@
                     <size key="shadowOffset" width="0.0" height="2"/>
                 </label>
                 <webView multipleTouchEnabled="YES" contentMode="scaleToFill" id="54">
-                    <rect key="frame" x="20" y="199" width="280" height="261"/>
+                    <rect key="frame" x="0.0" y="217" width="320" height="263"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
@@ -76,25 +76,25 @@
                     </connections>
                 </webView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interval" textAlignment="center" minimumFontSize="17" id="64">
-                    <rect key="frame" x="20" y="76" width="85" height="31"/>
+                    <rect key="frame" x="20" y="94" width="85" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shots" textAlignment="center" minimumFontSize="17" id="67">
-                    <rect key="frame" x="118" y="76" width="85" height="31"/>
+                    <rect key="frame" x="118" y="94" width="85" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FPS" textAlignment="center" minimumFontSize="17" id="68">
-                    <rect key="frame" x="215" y="76" width="85" height="31"/>
+                    <rect key="frame" x="215" y="94" width="85" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shots" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="72">
-                    <rect key="frame" x="118" y="44" width="85" height="32"/>
+                    <rect key="frame" x="118" y="62" width="85" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.93478260869999996" green="0.93478260869999996" blue="0.93478260869999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,7 +103,7 @@
                     <size key="shadowOffset" width="0.0" height="2"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FPS" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="73">
-                    <rect key="frame" x="215" y="44" width="85" height="32"/>
+                    <rect key="frame" x="215" y="62" width="85" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.93478260869999996" green="0.93478260869999996" blue="0.93478260869999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -112,7 +112,7 @@
                     <size key="shadowOffset" width="0.0" height="2"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="82">
-                    <rect key="frame" x="223" y="136" width="51" height="31"/>
+                    <rect key="frame" x="223" y="154" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="intervalToggleChanged:" destination="-1" eventType="valueChanged" id="85"/>
@@ -120,6 +120,7 @@
                 </switch>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
         </view>
     </objects>
 </document>
