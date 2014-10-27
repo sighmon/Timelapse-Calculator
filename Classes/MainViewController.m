@@ -95,7 +95,9 @@
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
     
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:^{
+        // Nothing to do here.
+    }];
     [self resetAll:self];
 }
 
@@ -145,7 +147,9 @@
 	controller.delegate = self;
 	
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:^{
+        // Nothing to do here.
+    }];
 	
 	[controller release];
 }
@@ -188,8 +192,14 @@
 - (IBAction)composeEmail:(id)sender
 {
 	NSMutableArray *itemsToShare = [[NSMutableArray alloc] initWithArray:@[[NSString stringWithFormat:@"Shooting duration of %@ shots at an interval of %@ seconds will be %@. \n\nPlayback duration of %@ shots at %@ frames per second will be %@.", shotsField.text, intervalField.text,
-                                                                            [self stringFromDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andFrames:0], shotsField.text, fpsField.text,
-                                                                            [self stringFromDays:0 andHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames]]]]];
+                                                                            [self stringFromDays:(int)[shootingPicker selectedRowInComponent:kShootingDays]
+                                                                                        andHours:(int)[shootingPicker selectedRowInComponent:kShootingHours]
+                                                                                      andMinutes:(int)[shootingPicker selectedRowInComponent:kShootingMinutes]
+                                                                                      andSeconds:(int)[shootingPicker selectedRowInComponent:kShootingSeconds]
+                                                                                       andFrames:0], shotsField.text, fpsField.text,
+                                                                            [self stringFromDays:0 andHours:(int)[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:(int)[playbackPicker selectedRowInComponent:kPlaybackMinutes]
+                                                                                      andSeconds:(int)[playbackPicker selectedRowInComponent:kPlaybackSeconds]
+                                                                                       andFrames:(int)[playbackPicker selectedRowInComponent:kPlaybackFrames]]]]];
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
     [activityController setValue:@"Timelapse calculations" forKey:@"subject"];
@@ -200,7 +210,9 @@
 // Dismisses the email composition interface when users tap Cancel or Send.
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
 {	
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:^{
+        // Nothing to do here.
+    }];
 }
 
 #pragma mark -
@@ -381,10 +393,10 @@
 - (void)updatePlaybackScript
 {
 	if ([fpsField.text intValue] > 0) {
-		[self playbackCentricWithHours:[playbackPicker selectedRowInComponent:kPlaybackHours] 
-							andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] 
-							andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] 
-							 andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames] 
+		[self playbackCentricWithHours:(int)[playbackPicker selectedRowInComponent:kPlaybackHours]
+							andMinutes:(int)[playbackPicker selectedRowInComponent:kPlaybackMinutes]
+							andSeconds:(int)[playbackPicker selectedRowInComponent:kPlaybackSeconds]
+							 andFrames:(int)[playbackPicker selectedRowInComponent:kPlaybackFrames]
 						   andInterval:[intervalField.text intValue] 
 								andFPS:[fpsField.text intValue]];
 	} else {
@@ -402,10 +414,10 @@
 - (void)updateShootingScript
 {
 	if ([intervalField.text intValue] > 0) {
-		[self shootCentricWithDays:[shootingPicker selectedRowInComponent:kShootingDays] 
-						  andHours:[shootingPicker selectedRowInComponent:kShootingHours] 
-						andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] 
-						andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] 
+		[self shootCentricWithDays:(int)[shootingPicker selectedRowInComponent:kShootingDays]
+						  andHours:(int)[shootingPicker selectedRowInComponent:kShootingHours]
+						andMinutes:(int)[shootingPicker selectedRowInComponent:kShootingMinutes]
+						andSeconds:(int)[shootingPicker selectedRowInComponent:kShootingSeconds]
 					   andInterval:[intervalField.text intValue] 
 					andPlaybackFPS:[fpsField.text intValue]];
 	} else {
@@ -423,7 +435,11 @@
 - (void)updateIntervalShootingScript 
 {
     if ([shotsField.text intValue] > 0) {
-        [self intervalCentricWithDays:[shootingPicker selectedRowInComponent:kShootingDays] andHours:[shootingPicker selectedRowInComponent:kShootingHours] andMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds] andShots:[shotsField.text intValue]];
+        [self intervalCentricWithDays:(int)[shootingPicker selectedRowInComponent:kShootingDays]
+                             andHours:(int)[shootingPicker selectedRowInComponent:kShootingHours]
+                           andMinutes:(int)[shootingPicker selectedRowInComponent:kShootingMinutes]
+                           andSeconds:(int)[shootingPicker selectedRowInComponent:kShootingSeconds]
+                             andShots:[shotsField.text intValue]];
     } else {
         intervalField.text = @"0";
     }
@@ -432,7 +448,15 @@
 - (void)updateIntervalPlaybackScript
 {
     if ([shotsField.text intValue] > 0) {
-        [self intervalCentricPlaybackWithHours:[playbackPicker selectedRowInComponent:kPlaybackHours] andMinutes:[playbackPicker selectedRowInComponent:kPlaybackMinutes] andSeconds:[playbackPicker selectedRowInComponent:kPlaybackSeconds] andFrames:[playbackPicker selectedRowInComponent:kPlaybackFrames] andFPS:[fpsField.text intValue] andShootingDays:[shootingPicker selectedRowInComponent:kShootingDays] andShootingHours:[shootingPicker selectedRowInComponent:kShootingHours] andShootingMinutes:[shootingPicker selectedRowInComponent:kShootingMinutes] andShootingSeconds:[shootingPicker selectedRowInComponent:kShootingSeconds]];
+        [self intervalCentricPlaybackWithHours:(int)[playbackPicker selectedRowInComponent:kPlaybackHours]
+                                    andMinutes:(int)[playbackPicker selectedRowInComponent:kPlaybackMinutes]
+                                    andSeconds:(int)[playbackPicker selectedRowInComponent:kPlaybackSeconds]
+                                     andFrames:(int)[playbackPicker selectedRowInComponent:kPlaybackFrames]
+                                        andFPS:[fpsField.text intValue]
+                               andShootingDays:(int)[shootingPicker selectedRowInComponent:kShootingDays]
+                              andShootingHours:(int)[shootingPicker selectedRowInComponent:kShootingHours]
+                            andShootingMinutes:(int)[shootingPicker selectedRowInComponent:kShootingMinutes]
+                            andShootingSeconds:(int)[shootingPicker selectedRowInComponent:kShootingSeconds]];
     } else {
         intervalField.text = @"0";
     }
@@ -531,7 +555,7 @@
 	retval.text = [pickerView.delegate pickerView:pickerView titleForRow:row forComponent:component];
 	retval.font = [UIFont boldSystemFontOfSize:18];
 	// retval.adjustsFontSizeToFitWidth = YES;
-	retval.textAlignment = UITextAlignmentCenter;
+	retval.textAlignment = NSTextAlignmentCenter;
 	retval.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.0];
 	return retval;
 }

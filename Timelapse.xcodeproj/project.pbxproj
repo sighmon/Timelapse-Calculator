@@ -20,8 +20,15 @@
 		052560B613E0186500D64428 /* blank-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 052560B413E0186500D64428 /* blank-dot.png */; };
 		052560B713E0186500D64428 /* red-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 052560B513E0186500D64428 /* red-dot.png */; };
 		05259BE113D2C39D00FEA7B3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05259BE013D2C39D00FEA7B3 /* Settings.bundle */; };
+		05271F7D19FC41C600FAB621 /* icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 05271F7C19FC41C600FAB621 /* icon-180.png */; };
 		052EE1A712E00BE400292760 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1A412E00BE400292760 /* credits.html */; };
 		052EE1ED12E013D800292760 /* si.png in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1EB12E013D800292760 /* si.png */; };
+		054CAC7C19FC3C790043694A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC7B19FC3C790043694A /* Images.xcassets */; };
+		054CAC7F19FC3D080043694A /* Default-1242x2208-landscape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC7D19FC3D080043694A /* Default-1242x2208-landscape@3x.png */; };
+		054CAC8019FC3D080043694A /* Default-1242x2208@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC7E19FC3D080043694A /* Default-1242x2208@3x.png */; };
+		054CAC8219FC3D170043694A /* Default-750x1334@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC8119FC3D170043694A /* Default-750x1334@2x.png */; };
+		054CAC8419FC3E630043694A /* icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC8319FC3E630043694A /* icon-87.png */; };
+		054CAC8619FC3E980043694A /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC8519FC3E980043694A /* icon-40.png */; };
 		0558F0B9180A5E76002533EF /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 0558F0B7180A5E76002533EF /* Icon-80.png */; };
 		0558F0BA180A5E76002533EF /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0558F0B8180A5E76002533EF /* Icon-120.png */; };
 		0576B41112E7D9BA00E4E689 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0576B40F12E7D9BA00E4E689 /* Default.png */; };
@@ -66,8 +73,15 @@
 		052560B413E0186500D64428 /* blank-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank-dot.png"; sourceTree = "<group>"; };
 		052560B513E0186500D64428 /* red-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-dot.png"; sourceTree = "<group>"; };
 		05259BE013D2C39D00FEA7B3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		05271F7C19FC41C600FAB621 /* icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-180.png"; sourceTree = "<group>"; };
 		052EE1A412E00BE400292760 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
 		052EE1EB12E013D800292760 /* si.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = si.png; path = ../si.png; sourceTree = "<group>"; };
+		054CAC7B19FC3C790043694A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		054CAC7D19FC3D080043694A /* Default-1242x2208-landscape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-1242x2208-landscape@3x.png"; sourceTree = "<group>"; };
+		054CAC7E19FC3D080043694A /* Default-1242x2208@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-1242x2208@3x.png"; sourceTree = "<group>"; };
+		054CAC8119FC3D170043694A /* Default-750x1334@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-750x1334@2x.png"; sourceTree = "<group>"; };
+		054CAC8319FC3E630043694A /* icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-87.png"; sourceTree = "<group>"; };
+		054CAC8519FC3E980043694A /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 		0558F0B7180A5E76002533EF /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		0558F0B8180A5E76002533EF /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		0576B40F12E7D9BA00E4E689 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -137,6 +151,9 @@
 		059033A412F1288D00B76180 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				05271F7C19FC41C600FAB621 /* icon-180.png */,
+				054CAC8519FC3E980043694A /* icon-40.png */,
+				054CAC8319FC3E630043694A /* icon-87.png */,
 				0558F0B7180A5E76002533EF /* Icon-80.png */,
 				0558F0B8180A5E76002533EF /* Icon-120.png */,
 				05183D1012E9612500D9A32E /* Icon-72.png */,
@@ -189,6 +206,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				054CAC7B19FC3C790043694A /* Images.xcassets */,
 				05259BE013D2C39D00FEA7B3 /* Settings.bundle */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
@@ -213,6 +231,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				054CAC8119FC3D170043694A /* Default-750x1334@2x.png */,
+				054CAC7D19FC3D080043694A /* Default-1242x2208-landscape@3x.png */,
+				054CAC7E19FC3D080043694A /* Default-1242x2208@3x.png */,
 				0524C28516106C9900ADDA9F /* red-dot@2x.png */,
 				05C9239016016A6400F69CF0 /* Default-568h@2x.png */,
 				052560B413E0186500D64428 /* blank-dot.png */,
@@ -316,14 +337,19 @@
 				052EE1A712E00BE400292760 /* credits.html in Resources */,
 				052EE1ED12E013D800292760 /* si.png in Resources */,
 				0576B41112E7D9BA00E4E689 /* Default.png in Resources */,
+				054CAC8619FC3E980043694A /* icon-40.png in Resources */,
 				0576B41212E7D9BA00E4E689 /* Default@2x.png in Resources */,
+				054CAC8219FC3D170043694A /* Default-750x1334@2x.png in Resources */,
 				0576B42C12E7DEE400E4E689 /* DoneDown.png in Resources */,
 				0576B42D12E7DEE400E4E689 /* DoneDown3.png in Resources */,
+				054CAC8019FC3D080043694A /* Default-1242x2208@3x.png in Resources */,
+				054CAC7F19FC3D080043694A /* Default-1242x2208-landscape@3x.png in Resources */,
 				0576B42E12E7DEE400E4E689 /* DoneUp.png in Resources */,
 				0576B42F12E7DEE400E4E689 /* DoneUp3.png in Resources */,
 				05183D1712E9612500D9A32E /* Icon-72.png in Resources */,
 				05183D1812E9612600D9A32E /* Icon-Small-50.png in Resources */,
 				05183D1912E9612600D9A32E /* Icon-Small.png in Resources */,
+				054CAC7C19FC3C790043694A /* Images.xcassets in Resources */,
 				05183D1A12E9612600D9A32E /* Icon-Small@2x.png in Resources */,
 				05183D1B12E9612600D9A32E /* Icon.png in Resources */,
 				05183D1C12E9612600D9A32E /* Icon@2x.png in Resources */,
@@ -333,7 +359,9 @@
 				0590341612F1372F00B76180 /* pix.png in Resources */,
 				0590341712F1372F00B76180 /* dan.png in Resources */,
 				0590343B12F13E2900B76180 /* dan@2x.png in Resources */,
+				054CAC8419FC3E630043694A /* icon-87.png in Resources */,
 				0590343C12F13E2900B76180 /* pix@2x.png in Resources */,
+				05271F7D19FC41C600FAB621 /* icon-180.png in Resources */,
 				0590344112F13E3900B76180 /* lens-background@2x.png in Resources */,
 				0590344212F13E3900B76180 /* si@2x.png in Resources */,
 				05259BE113D2C39D00FEA7B3 /* Settings.bundle in Resources */,
@@ -382,6 +410,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -395,7 +425,7 @@
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Timelapse;
 				PROVISIONING_PROFILE = "";
 			};
@@ -405,8 +435,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Simon Loffler (4P8S9W2NYL)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Simon Loffler (4P8S9W2NYL)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -416,10 +448,10 @@
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Timelapse;
-				PROVISIONING_PROFILE = "A9E71A59-7AAD-489C-9AA1-D4E78EFF3289";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A9E71A59-7AAD-489C-9AA1-D4E78EFF3289";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
