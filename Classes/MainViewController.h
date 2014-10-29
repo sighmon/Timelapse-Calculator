@@ -43,7 +43,7 @@
 	IBOutlet UITextField *intervalField;
 	IBOutlet UITextField *shotsField;
 	IBOutlet UITextField *fpsField;
-    IBOutlet UIImageView *intervalSelectedImage;
+    IBOutlet UIView *intervalSelectedView;
     BOOL intervalToggle;
 	
 	IBOutlet UIPickerView *shootingPicker;
@@ -65,7 +65,7 @@
 @property (nonatomic, retain) UITextField *intervalField;
 @property (nonatomic, retain) UITextField *shotsField;
 @property (nonatomic, retain) UITextField *fpsField;
-@property (nonatomic, retain) UIImageView *intervalSelectedImage;
+@property (nonatomic, retain) UIView *intervalSelectedView;
 @property (nonatomic, assign) BOOL intervalToggle;
 
 @property (nonatomic, retain) UIPickerView *shootingPicker;

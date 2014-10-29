@@ -32,7 +32,7 @@
 @implementation MainViewController
 
 @synthesize intervalField, shotsField, fpsField;
-@synthesize intervalSelectedImage;
+@synthesize intervalSelectedView;
 @synthesize intervalToggle;
 @synthesize shootingPicker, shootingDuration, shootingDays, shootingHours, shootingMinutes, shootingSeconds;
 @synthesize playbackPicker, playbackDuration, playbackHours, playbackMinutes, playbackSeconds, playbackFrames;
@@ -41,11 +41,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
-    // Set the interval toggle to NO
-    // intervalToggle = NO;
-    
-    // Interval toggle will now be loaded from settings defaults.
 	
 	// Shooting wheel setup
 	
@@ -139,6 +134,10 @@
 	[self updateSettingsScript];
     // Check that the Interval Toggle image is correct.
     [self checkIntervalSelectedImage];
+    
+    // Set the border radius for the intervalSelectedView
+    intervalSelectedView.layer.masksToBounds = YES;
+    intervalSelectedView.layer.cornerRadius = 5.0;
 }
 
 - (IBAction)showInfo:(id)sender {    
@@ -649,20 +648,20 @@
 
 - (void)toggleIntervalSelected {
     if (intervalToggle == NO) {
-        // Change image
-        intervalSelectedImage.image = [UIImage imageNamed:@"red-dot.png"];
+        // Change colour to red
+        [intervalSelectedView setBackgroundColor:[UIColor redColor]];
         intervalToggle = YES;
     } else {
-        intervalSelectedImage.image = [UIImage imageNamed:@"blank-dot.png"];
+        [intervalSelectedView setBackgroundColor:[UIColor clearColor]];
         intervalToggle = NO;
     }
 }
 
 - (void)checkIntervalSelectedImage {
     if (intervalToggle == YES) {
-        intervalSelectedImage.image = [UIImage imageNamed:@"red-dot.png"];
+        [intervalSelectedView setBackgroundColor:[UIColor redColor]];
     } else {
-        intervalSelectedImage.image = [UIImage imageNamed:@"blank-dot.png"];
+        [intervalSelectedView setBackgroundColor:[UIColor clearColor]];
     }
 }
 
@@ -710,7 +709,7 @@
 	[playbackSeconds release];
 	[playbackFrames release];
 	
-    [intervalSelectedImage release];
+    [intervalSelectedView release];
     [super dealloc];
 }
 

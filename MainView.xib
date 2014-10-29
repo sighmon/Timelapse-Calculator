@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="fpsField" destination="55" id="75"/>
                 <outlet property="intervalField" destination="51" id="73"/>
-                <outlet property="intervalSelectedImage" destination="92" id="93"/>
+                <outlet property="intervalSelectedView" destination="w8J-Go-Aoe" id="TJi-De-GfG"/>
                 <outlet property="playbackPicker" destination="41" id="58"/>
                 <outlet property="shootingPicker" destination="40" id="57"/>
                 <outlet property="shotsField" destination="54" id="74"/>
@@ -21,9 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="66">
+                <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                     <state key="normal">
                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,101 +35,8 @@
                         <action selector="backgroundClick:" destination="-1" eventType="touchUpInside" id="71"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="47">
-                    <rect key="frame" x="17" y="43" width="90" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="2"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interval" textAlignment="center" minimumFontSize="17" id="51">
-                    <rect key="frame" x="17" y="78" width="90" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                    <connections>
-                        <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="68"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shots" textAlignment="center" minimumFontSize="17" id="54">
-                    <rect key="frame" x="115" y="78" width="90" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                    <connections>
-                        <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="69"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FPS" textAlignment="center" minimumFontSize="17" id="55">
-                    <rect key="frame" x="213" y="78" width="90" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                    <connections>
-                        <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="70"/>
-                    </connections>
-                </textField>
-                <pickerView contentMode="scaleToFill" id="40">
-                    <rect key="frame" x="0.0" y="201" width="147" height="216"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="60"/>
-                        <outlet property="delegate" destination="-1" id="61"/>
-                    </connections>
-                </pickerView>
-                <pickerView contentMode="scaleToFill" id="41">
-                    <rect key="frame" x="173" y="201" width="147" height="216"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="62"/>
-                        <outlet property="delegate" destination="-1" id="63"/>
-                    </connections>
-                </pickerView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shooting" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="42">
-                    <rect key="frame" x="13" y="151" width="134" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="2"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Playback" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="43">
-                    <rect key="frame" x="173" y="151" width="134" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="2"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="days, hours, mins, secs" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="44">
-                    <rect key="frame" x="13" y="176" width="134" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="1"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="hours, mins, secs, frames" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="46">
-                    <rect key="frame" x="173" y="176" width="134" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="1"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shots" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="64">
-                    <rect key="frame" x="115" y="43" width="90" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="2"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FPS" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="65">
-                    <rect key="frame" x="213" y="43" width="87" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="0.0" height="2"/>
-                </label>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="77">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77">
                     <rect key="frame" x="0.0" y="436" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem systemItem="action" id="78">
                             <connections>
@@ -164,18 +70,204 @@
                     </items>
                     <color key="tintColor" red="0.30724033589999999" green="0.30327389490000001" blue="0.31818181820000002" alpha="1" colorSpace="calibratedRGB"/>
                 </toolbar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blank-dot.png" id="92">
-                    <rect key="frame" x="19" y="55" width="8" height="9"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-Q2-Lwm">
+                    <rect key="frame" x="0.0" y="57" width="320" height="66"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47">
+                            <rect key="frame" x="17" y="0.0" width="90" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="1jy-9P-wbK"/>
+                                <constraint firstAttribute="width" constant="90" id="YSn-dr-Y1H"/>
+                                <constraint firstAttribute="height" constant="32" id="vv7-ZL-bUs"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="2"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shots" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64">
+                            <rect key="frame" x="115" y="0.0" width="90" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="mco-Iy-NIj"/>
+                                <constraint firstAttribute="height" constant="32" id="xwO-fH-OXZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="2"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FPS" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65">
+                            <rect key="frame" x="213" y="0.0" width="90" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="BlM-oP-7rb"/>
+                                <constraint firstAttribute="height" constant="32" id="CCE-Tr-mua"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="2"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Interval" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51">
+                            <rect key="frame" x="17" y="36" width="90" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="ahQ-UD-AfH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            <connections>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="68"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Shots" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="54">
+                            <rect key="frame" x="115" y="36" width="90" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="HDr-wJ-aAl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            <connections>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="69"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="FPS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="55">
+                            <rect key="frame" x="213" y="36" width="90" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="48v-vZ-DYi"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            <connections>
+                                <action selector="textFieldDoneEditing:" destination="-1" eventType="editingDidEndOnExit" id="70"/>
+                            </connections>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8J-Go-Aoe">
+                            <rect key="frame" x="18" y="12" width="10" height="10"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="B4t-d6-Eey"/>
+                                <constraint firstAttribute="height" constant="10" id="YXI-Jg-Qmx"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="65" firstAttribute="leading" secondItem="64" secondAttribute="trailing" constant="8" id="15I-hZ-cBe"/>
+                        <constraint firstItem="54" firstAttribute="leading" secondItem="51" secondAttribute="trailing" constant="8" id="ETQ-3x-cQ0"/>
+                        <constraint firstAttribute="centerX" secondItem="64" secondAttribute="centerX" id="Iy3-CF-d4z"/>
+                        <constraint firstItem="w8J-Go-Aoe" firstAttribute="leading" secondItem="47" secondAttribute="leading" constant="1" id="Jo5-2i-nLq"/>
+                        <constraint firstItem="55" firstAttribute="leading" secondItem="54" secondAttribute="trailing" constant="8" id="KgT-PQ-3TF"/>
+                        <constraint firstItem="54" firstAttribute="top" secondItem="64" secondAttribute="bottom" constant="4" id="SLv-Yq-c6v"/>
+                        <constraint firstItem="47" firstAttribute="top" secondItem="Edh-Q2-Lwm" secondAttribute="top" id="U1F-NY-VTM"/>
+                        <constraint firstItem="65" firstAttribute="top" secondItem="Edh-Q2-Lwm" secondAttribute="top" id="der-0W-gRx"/>
+                        <constraint firstItem="51" firstAttribute="top" secondItem="47" secondAttribute="bottom" constant="4" id="fBZ-HQ-Rng"/>
+                        <constraint firstItem="55" firstAttribute="top" secondItem="65" secondAttribute="bottom" constant="4" id="gow-mn-1tr"/>
+                        <constraint firstItem="64" firstAttribute="top" secondItem="Edh-Q2-Lwm" secondAttribute="top" id="nui-yl-Z8i"/>
+                        <constraint firstAttribute="centerX" secondItem="54" secondAttribute="centerX" id="tmn-83-Dg0"/>
+                        <constraint firstItem="64" firstAttribute="leading" secondItem="47" secondAttribute="trailing" constant="8" id="uKW-xu-EF7"/>
+                        <constraint firstItem="w8J-Go-Aoe" firstAttribute="top" secondItem="Edh-Q2-Lwm" secondAttribute="top" constant="12" id="xgQ-aY-tKB"/>
+                        <constraint firstAttribute="height" constant="66" id="xkD-QX-60h"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDd-SB-g86">
+                    <rect key="frame" x="0.0" y="164" width="320" height="271"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41">
+                            <rect key="frame" x="173" y="55" width="147" height="216"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="147" id="gwr-Si-Egb"/>
+                                <constraint firstAttribute="height" constant="216" id="p2N-JT-ghb"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="62"/>
+                                <outlet property="delegate" destination="-1" id="63"/>
+                            </connections>
+                        </pickerView>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40">
+                            <rect key="frame" x="0.0" y="55" width="147" height="216"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="147" id="hEf-ec-LKh"/>
+                                <constraint firstAttribute="height" constant="216" id="r0y-ho-bXP"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="60"/>
+                                <outlet property="delegate" destination="-1" id="61"/>
+                            </connections>
+                        </pickerView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Shooting" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42">
+                            <rect key="frame" x="13" y="5" width="134" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="fXe-Zl-UyW"/>
+                                <constraint firstAttribute="width" constant="134" id="h2A-2r-x0o"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="2"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Playback" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43">
+                            <rect key="frame" x="173" y="5" width="134" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="134" id="5ED-Mr-S3u"/>
+                                <constraint firstAttribute="height" constant="22" id="RtZ-vO-PMM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="2"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="hours, mins, secs, frames" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46">
+                            <rect key="frame" x="173" y="30" width="134" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="33K-vz-UMQ"/>
+                                <constraint firstAttribute="width" constant="134" id="kMc-IF-0jA"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="1"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="days, hours, mins, secs" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44">
+                            <rect key="frame" x="13" y="30" width="134" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="134" id="kof-f3-kd2"/>
+                                <constraint firstAttribute="height" constant="17" id="wg8-Bm-rPt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="shadowOffset" width="0.0" height="1"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="46" firstAttribute="top" secondItem="43" secondAttribute="bottom" constant="3" id="5pJ-C6-qAe"/>
+                        <constraint firstAttribute="width" constant="320" id="Bez-gd-Sk0"/>
+                        <constraint firstAttribute="trailing" secondItem="46" secondAttribute="trailing" constant="13" id="CzG-kE-UzA"/>
+                        <constraint firstItem="43" firstAttribute="leading" secondItem="42" secondAttribute="trailing" constant="26" id="IAs-2G-yWP"/>
+                        <constraint firstAttribute="trailing" secondItem="43" secondAttribute="trailing" constant="13" id="WPi-cy-lyC"/>
+                        <constraint firstItem="42" firstAttribute="top" secondItem="RDd-SB-g86" secondAttribute="top" constant="5" id="Wkh-Ov-dcn"/>
+                        <constraint firstItem="40" firstAttribute="leading" secondItem="RDd-SB-g86" secondAttribute="leading" id="deZ-O5-9Z9"/>
+                        <constraint firstItem="42" firstAttribute="leading" secondItem="RDd-SB-g86" secondAttribute="leading" constant="13" id="fbN-RJ-f0O"/>
+                        <constraint firstItem="43" firstAttribute="top" secondItem="RDd-SB-g86" secondAttribute="top" constant="5" id="gKZ-Sn-QOD"/>
+                        <constraint firstItem="41" firstAttribute="leading" secondItem="40" secondAttribute="trailing" constant="26" id="j9p-z7-o4L"/>
+                        <constraint firstItem="44" firstAttribute="top" secondItem="42" secondAttribute="bottom" constant="3" id="jTu-8h-nf4"/>
+                        <constraint firstAttribute="height" constant="271" id="sJ8-eO-Qmb"/>
+                        <constraint firstAttribute="bottom" secondItem="41" secondAttribute="bottom" id="uz8-cl-bDe"/>
+                        <constraint firstAttribute="trailing" secondItem="41" secondAttribute="trailing" id="x8f-jN-r5U"/>
+                        <constraint firstItem="46" firstAttribute="leading" secondItem="44" secondAttribute="trailing" constant="26" id="xAc-Ay-Val"/>
+                        <constraint firstItem="44" firstAttribute="leading" secondItem="RDd-SB-g86" secondAttribute="leading" constant="13" id="xg7-Hm-Ydu"/>
+                        <constraint firstAttribute="bottom" secondItem="40" secondAttribute="bottom" id="yV1-QZ-S6G"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.82352941176470584" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Edh-Q2-Lwm" firstAttribute="leading" secondItem="34" secondAttribute="leading" id="4i7-IG-uvh"/>
+                <constraint firstItem="77" firstAttribute="leading" secondItem="34" secondAttribute="leading" id="54g-3z-fc9"/>
+                <constraint firstAttribute="centerX" secondItem="RDd-SB-g86" secondAttribute="centerX" id="KOm-12-q3l"/>
+                <constraint firstAttribute="bottom" secondItem="77" secondAttribute="bottom" id="PdD-b4-xLw"/>
+                <constraint firstAttribute="centerY" secondItem="Edh-Q2-Lwm" secondAttribute="centerY" constant="150" id="SOn-Sf-UFD"/>
+                <constraint firstAttribute="trailing" secondItem="77" secondAttribute="trailing" id="fbn-e7-uN6"/>
+                <constraint firstAttribute="trailing" secondItem="Edh-Q2-Lwm" secondAttribute="trailing" id="hMJ-KB-cqB"/>
+                <constraint firstAttribute="centerY" secondItem="RDd-SB-g86" secondAttribute="centerY" constant="-59.5" id="he1-um-38M"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="391" y="285"/>
         </view>
     </objects>
-    <resources>
-        <image name="blank-dot.png" width="8" height="9"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
