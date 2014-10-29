@@ -2,6 +2,12 @@
 <http://sighmon.com/timelapse-helper>
 
 ## What's New?
+Version 1.3
+
+* Updated for iOS 8.
+* Added iPhone 6 and iPhone 6+ support.
+* Changed to Autolayout to handle the size differences.
+
 Version 1.2
 
 * Fixed a bug in 'Interval Calculator' mode where the interval wasn't being calculated when toggling the playback wheel.
