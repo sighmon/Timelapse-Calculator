@@ -21,7 +21,6 @@
 
 #import "TimelapseAppDelegate.h"
 #import "MainViewController.h"
-#import <Crashlytics/Crashlytics.h>
 
 @implementation TimelapseAppDelegate
 
@@ -36,8 +35,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
-    
-    [Crashlytics startWithAPIKey:@"11dfc9e3ad2aa24c7e6086c166e25a286ba3b7a0"];
 
     // Add the main view controller's view to the window and display.
     // [self.window addSubview:mainViewController.view];

@@ -43,7 +43,6 @@
 		0590344112F13E3900B76180 /* lens-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590343F12F13E3900B76180 /* lens-background@2x.png */; };
 		0590344212F13E3900B76180 /* si@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590344012F13E3900B76180 /* si@2x.png */; };
 		05C9239116016A6400F69CF0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C9239016016A6400F69CF0 /* Default-568h@2x.png */; };
-		05F7E59216BCB0430040E514 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F7E59116BCB0430040E514 /* Crashlytics.framework */; };
 		1D3623260D0F684500981E51 /* TimelapseAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TimelapseAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -93,7 +92,6 @@
 		0590343F12F13E3900B76180 /* lens-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lens-background@2x.png"; sourceTree = "<group>"; };
 		0590344012F13E3900B76180 /* si@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "si@2x.png"; path = "../si@2x.png"; sourceTree = "<group>"; };
 		05C9239016016A6400F69CF0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		05F7E59116BCB0430040E514 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TimelapseAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelapseAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TimelapseAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelapseAppDelegate.m; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				0590335A12F0FB9900B76180 /* MessageUI.framework in Frameworks */,
-				05F7E59216BCB0430040E514 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +249,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				05F7E59116BCB0430040E514 /* Crashlytics.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
@@ -375,7 +371,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 11dfc9e3ad2aa24c7e6086c166e25a286ba3b7a0";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -413,7 +410,7 @@
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = Timelapse;
 				PROVISIONING_PROFILE = "";
 			};
@@ -436,7 +433,7 @@
 				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = Timelapse;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -452,7 +449,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -468,7 +465,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
