@@ -3,31 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0502A19E12DEA22600586EB2 /* playbackdictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0502A19C12DEA22600586EB2 /* playbackdictionary.plist */; };
 		0502A19F12DEA22600586EB2 /* shootingdictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0502A19D12DEA22600586EB2 /* shootingdictionary.plist */; };
-		05183D1712E9612500D9A32E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1012E9612500D9A32E /* Icon-72.png */; };
-		05183D1812E9612600D9A32E /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1112E9612500D9A32E /* Icon-Small-50.png */; };
-		05183D1912E9612600D9A32E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1212E9612500D9A32E /* Icon-Small.png */; };
-		05183D1A12E9612600D9A32E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1312E9612500D9A32E /* Icon-Small@2x.png */; };
-		05183D1B12E9612600D9A32E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1412E9612500D9A32E /* Icon.png */; };
-		05183D1C12E9612600D9A32E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1512E9612500D9A32E /* Icon@2x.png */; };
-		05183D1D12E9612600D9A32E /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 05183D1612E9612500D9A32E /* iTunesArtwork.png */; };
 		05259BE113D2C39D00FEA7B3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 05259BE013D2C39D00FEA7B3 /* Settings.bundle */; };
-		05271F7D19FC41C600FAB621 /* icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 05271F7C19FC41C600FAB621 /* icon-180.png */; };
 		052EE1A712E00BE400292760 /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1A412E00BE400292760 /* credits.html */; };
 		052EE1ED12E013D800292760 /* si.png in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1EB12E013D800292760 /* si.png */; };
 		054CAC7C19FC3C790043694A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC7B19FC3C790043694A /* Images.xcassets */; };
 		054CAC7F19FC3D080043694A /* Default-1242x2208-landscape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC7D19FC3D080043694A /* Default-1242x2208-landscape@3x.png */; };
 		054CAC8019FC3D080043694A /* Default-1242x2208@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC7E19FC3D080043694A /* Default-1242x2208@3x.png */; };
 		054CAC8219FC3D170043694A /* Default-750x1334@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC8119FC3D170043694A /* Default-750x1334@2x.png */; };
-		054CAC8419FC3E630043694A /* icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC8319FC3E630043694A /* icon-87.png */; };
-		054CAC8619FC3E980043694A /* icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 054CAC8519FC3E980043694A /* icon-40.png */; };
-		0558F0B9180A5E76002533EF /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 0558F0B7180A5E76002533EF /* Icon-80.png */; };
-		0558F0BA180A5E76002533EF /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0558F0B8180A5E76002533EF /* Icon-120.png */; };
 		0576B41112E7D9BA00E4E689 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0576B40F12E7D9BA00E4E689 /* Default.png */; };
 		0576B41212E7D9BA00E4E689 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0576B41012E7D9BA00E4E689 /* Default@2x.png */; };
 		0576B42C12E7DEE400E4E689 /* DoneDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 0576B42812E7DEE400E4E689 /* DoneDown.png */; };
@@ -43,17 +31,33 @@
 		0590344112F13E3900B76180 /* lens-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590343F12F13E3900B76180 /* lens-background@2x.png */; };
 		0590344212F13E3900B76180 /* si@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590344012F13E3900B76180 /* si@2x.png */; };
 		05C9239116016A6400F69CF0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C9239016016A6400F69CF0 /* Default-568h@2x.png */; };
-		1D3623260D0F684500981E51 /* TimelapseAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TimelapseAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754A0DD40C5E005A515E /* FlipsideView.xib */; };
 		280E754E0DD40C5E005A515E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
-		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
-		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		A11C4C020000000000000001 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000001 /* Calculator.swift */; };
+		A11C4C020000000000000002 /* CalculatorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000002 /* CalculatorStore.swift */; };
+		A11C4C020000000000000003 /* TimelapseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000003 /* TimelapseApp.swift */; };
+		A11C4C020000000000000004 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000004 /* CalculatorView.swift */; };
+		A11C4C020000000000000005 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000005 /* SettingsView.swift */; };
+		A11C4C020000000000000006 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000006 /* CalculatorTests.swift */; };
+		A11C4C020000000000000008 /* LeicaClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000008 /* LeicaClick.swift */; };
+		A11C4C020000000000000009 /* leica-click.wav in Resources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000009 /* leica-click.wav */; };
+		A11C4C02000000000000000A /* timelapse.icon in Resources */ = {isa = PBXBuildFile; fileRef = A11C4C01000000000000000A /* timelapse.icon */; };
+		A11C4C02000000000000000B /* leica-shutter.wav in Resources */ = {isa = PBXBuildFile; fileRef = A11C4C01000000000000000B /* leica-shutter.wav */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A11C4C040000000000000005 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = Timelapse;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0502A19C12DEA22600586EB2 /* playbackdictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = playbackdictionary.plist; sourceTree = "<group>"; };
@@ -108,6 +112,17 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Timelapse_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timelapse_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Timelapse-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Timelapse-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A11C4C010000000000000001 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000002 /* CalculatorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorStore.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000003 /* TimelapseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelapseApp.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000004 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000005 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000006 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000007 /* TimelapseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelapseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11C4C010000000000000008 /* LeicaClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeicaClick.swift; sourceTree = "<group>"; };
+		A11C4C010000000000000009 /* leica-click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "leica-click.wav"; sourceTree = "<group>"; };
+		A11C4C01000000000000000A /* timelapse.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer; path = timelapse.icon; sourceTree = "<group>"; };
+		A11C4C01000000000000000B /* leica-shutter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "leica-shutter.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +134,13 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				0590335A12F0FB9900B76180 /* MessageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11C4C040000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Timelapse.app */,
+				A11C4C010000000000000007 /* TimelapseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +220,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A11C4C01000000000000000A /* timelapse.icon */,
+				A11C4C030000000000000001 /* Swift */,
+				A11C4C030000000000000003 /* Sounds */,
+				A11C4C030000000000000002 /* TimelapseTests */,
 				054CAC7B19FC3C790043694A /* Images.xcassets */,
 				05259BE013D2C39D00FEA7B3 /* Settings.bundle */,
 				289233A00DB2D0730083E9F9 /* Main View */,
@@ -257,6 +284,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A11C4C030000000000000001 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4C010000000000000001 /* Calculator.swift */,
+				A11C4C010000000000000002 /* CalculatorStore.swift */,
+				A11C4C010000000000000003 /* TimelapseApp.swift */,
+				A11C4C010000000000000004 /* CalculatorView.swift */,
+				A11C4C010000000000000005 /* SettingsView.swift */,
+				A11C4C010000000000000008 /* LeicaClick.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		A11C4C030000000000000002 /* TimelapseTests */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4C010000000000000006 /* CalculatorTests.swift */,
+			);
+			path = TimelapseTests;
+			sourceTree = "<group>";
+		};
+		A11C4C030000000000000003 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A11C4C010000000000000009 /* leica-click.wav */,
+				A11C4C01000000000000000B /* leica-shutter.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,7 +324,6 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				05F7E59016BCAFE70040E514 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -278,35 +334,60 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* Timelapse.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A11C4C040000000000000001 /* TimelapseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A11C4C040000000000000009 /* Build configuration list for PBXNativeTarget "TimelapseTests" */;
+			buildPhases = (
+				A11C4C040000000000000002 /* Sources */,
+				A11C4C040000000000000003 /* Frameworks */,
+				A11C4C040000000000000004 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A11C4C040000000000000006 /* PBXTargetDependency */,
+			);
+			name = TimelapseTests;
+			productName = TimelapseTests;
+			productReference = A11C4C010000000000000007 /* TimelapseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 4P8S9W2NYL;
+						LastSwiftMigration = 2630;
+					};
+					A11C4C040000000000000001 = {
+						DevelopmentTeam = 4P8S9W2NYL;
+						LastSwiftMigration = 2630;
+						TestTargetID = 1D6058900D05DD3D006BFB54;
 					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Timelapse" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
 				en,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Timelapse */,
+				A11C4C040000000000000001 /* TimelapseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -316,6 +397,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11C4C02000000000000000A /* timelapse.icon in Resources */,
+				A11C4C020000000000000009 /* leica-click.wav in Resources */,
+				A11C4C02000000000000000B /* leica-shutter.wav in Resources */,
 				280E754D0DD40C5E005A515E /* FlipsideView.xib in Resources */,
 				280E754E0DD40C5E005A515E /* MainView.xib in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
@@ -324,7 +408,6 @@
 				052EE1A712E00BE400292760 /* credits.html in Resources */,
 				052EE1ED12E013D800292760 /* si.png in Resources */,
 				0576B41112E7D9BA00E4E689 /* Default.png in Resources */,
-				054CAC8619FC3E980043694A /* icon-40.png in Resources */,
 				0576B41212E7D9BA00E4E689 /* Default@2x.png in Resources */,
 				054CAC8219FC3D170043694A /* Default-750x1334@2x.png in Resources */,
 				0576B42C12E7DEE400E4E689 /* DoneDown.png in Resources */,
@@ -333,86 +416,87 @@
 				054CAC7F19FC3D080043694A /* Default-1242x2208-landscape@3x.png in Resources */,
 				0576B42E12E7DEE400E4E689 /* DoneUp.png in Resources */,
 				0576B42F12E7DEE400E4E689 /* DoneUp3.png in Resources */,
-				05183D1712E9612500D9A32E /* Icon-72.png in Resources */,
-				05183D1812E9612600D9A32E /* Icon-Small-50.png in Resources */,
-				05183D1912E9612600D9A32E /* Icon-Small.png in Resources */,
 				054CAC7C19FC3C790043694A /* Images.xcassets in Resources */,
-				05183D1A12E9612600D9A32E /* Icon-Small@2x.png in Resources */,
-				05183D1B12E9612600D9A32E /* Icon.png in Resources */,
-				05183D1C12E9612600D9A32E /* Icon@2x.png in Resources */,
-				05183D1D12E9612600D9A32E /* iTunesArtwork.png in Resources */,
-				0558F0BA180A5E76002533EF /* Icon-120.png in Resources */,
 				0590333112F0F00A00B76180 /* lens-background.png in Resources */,
 				0590341612F1372F00B76180 /* pix.png in Resources */,
 				0590341712F1372F00B76180 /* dan.png in Resources */,
 				0590343B12F13E2900B76180 /* dan@2x.png in Resources */,
-				054CAC8419FC3E630043694A /* icon-87.png in Resources */,
 				0590343C12F13E2900B76180 /* pix@2x.png in Resources */,
-				05271F7D19FC41C600FAB621 /* icon-180.png in Resources */,
 				0590344112F13E3900B76180 /* lens-background@2x.png in Resources */,
 				0590344212F13E3900B76180 /* si@2x.png in Resources */,
 				05259BE113D2C39D00FEA7B3 /* Settings.bundle in Resources */,
 				05C9239116016A6400F69CF0 /* Default-568h@2x.png in Resources */,
-				0558F0B9180A5E76002533EF /* Icon-80.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11C4C040000000000000004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		05F7E59016BCAFE70040E514 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "
-";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* TimelapseAppDelegate.m in Sources */,
-				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
-				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
+				A11C4C020000000000000001 /* Calculator.swift in Sources */,
+				A11C4C020000000000000002 /* CalculatorStore.swift in Sources */,
+				A11C4C020000000000000003 /* TimelapseApp.swift in Sources */,
+				A11C4C020000000000000004 /* CalculatorView.swift in Sources */,
+				A11C4C020000000000000005 /* SettingsView.swift in Sources */,
+				A11C4C020000000000000008 /* LeicaClick.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11C4C040000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11C4C020000000000000006 /* CalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A11C4C040000000000000006 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* Timelapse */;
+			targetProxy = A11C4C040000000000000005 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = timelapse;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4P8S9W2NYL;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sighmon.timelapse;
 				PRODUCT_NAME = Timelapse;
-				PROVISIONING_PROFILE = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -420,56 +504,117 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = timelapse;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Timelapse_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4P8S9W2NYL;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Timelapse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sighmon.timelapse;
 				PRODUCT_NAME = Timelapse;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A11C4C040000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4P8S9W2NYL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sighmon.timelapse.tests;
+				PRODUCT_NAME = TimelapseTests;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Timelapse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Timelapse";
+			};
+			name = Debug;
+		};
+		A11C4C040000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4P8S9W2NYL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sighmon.timelapse.tests;
+				PRODUCT_NAME = TimelapseTests;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Timelapse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Timelapse";
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -481,6 +626,15 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A11C4C040000000000000009 /* Build configuration list for PBXNativeTarget "TimelapseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A11C4C040000000000000007 /* Debug */,
+				A11C4C040000000000000008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
