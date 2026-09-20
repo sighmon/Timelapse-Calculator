@@ -1,7 +1,17 @@
-# TIMELAPSE HELPER
-<http://sighmon.com/timelapse-helper>
+# Timelapse Helper for iOS
+
+<img src="timelapse-helper-1.png" width="30%" /><img src="timelapse-helper-2.png" width="30%" /><img src="timelapse-helper-3.png" width="30%" />
+
+[Website](https://sighmon.com/timelapse-helper)
 
 ## What's New?
+
+Version 2.0
+
+* Ported to SwiftUI
+* Updated for iOS 27
+* Added clicks and pops to the interface
+
 Version 1.3
 
 * Updated for iOS 8.
