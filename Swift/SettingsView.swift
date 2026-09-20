@@ -38,15 +38,13 @@ struct SettingsView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .interactiveDismissDisabled()
         .onAppear {
             let saved = store.loadSavedDefaults()
             interval = saved.interval
             shots = saved.shots
             fps = saved.fps
             intervalMode = saved.intervalMode
-        }
-        .onChange(of: intervalMode) { _, newValue in
-            store.saveDefaults(interval: interval, shots: shots, fps: fps, intervalMode: newValue)
         }
     }
 
@@ -146,4 +144,8 @@ struct SettingsView: View {
     private func persist() {
         store.saveDefaults(interval: interval, shots: shots, fps: fps, intervalMode: intervalMode)
     }
+}
+
+#Preview("Settings") {
+    SettingsView(store: CalculatorStore(defaults: UserDefaults(suiteName: "SettingsPreview")!))
 }

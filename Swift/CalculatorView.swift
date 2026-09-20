@@ -305,3 +305,7 @@ private func wheel(_ unit: String, selection: Binding<Int>, range: Range<Int>) -
     }
     .frame(maxWidth: .infinity)
 }
+
+#Preview("Calculator") {
+    CalculatorView()
+}
