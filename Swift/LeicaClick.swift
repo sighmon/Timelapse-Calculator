@@ -37,7 +37,6 @@ enum LeicaClick {
         try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default, options: [.mixWithOthers])
         load(.detent, resource: "leica-click", volume: 0.42)
         load(.shutter, resource: "leica-shutter", volume: 0.7)
-        startHapticEngine()
     }
 
     static func play() {
@@ -66,14 +65,17 @@ enum LeicaClick {
     }
 
     private static func playHaptic(_ kind: Kind) {
+        prepareHapticEngine()
         if supportsHaptics, let engine {
             do {
+                // Start on demand, including after automatic idle shutdown or a reset.
+                try engine.start()
                 let pattern = try hapticPattern(for: kind)
                 let player = try engine.makePlayer(with: pattern)
                 try player.start(atTime: CHHapticTimeImmediate)
                 return
             } catch {
-                startHapticEngine()
+                // Use UIKit feedback if the engine cannot play this interaction.
             }
         }
         switch kind {
@@ -136,18 +138,13 @@ enum LeicaClick {
         }
     }
 
-    private static func startHapticEngine() {
-        guard supportsHaptics else { return }
+    private static func prepareHapticEngine() {
+        guard supportsHaptics, engine == nil else { return }
         do {
             let hapticEngine = try CHHapticEngine()
             hapticEngine.isAutoShutdownEnabled = true
-            hapticEngine.resetHandler = {
-                try? hapticEngine.start()
-            }
-            hapticEngine.stoppedHandler = { _ in
-                try? hapticEngine.start()
-            }
-            try hapticEngine.start()
+            // No players are cached; the next interaction restarts the engine
+            // and creates a fresh player after any stop or reset.
             engine = hapticEngine
         } catch {
             engine = nil

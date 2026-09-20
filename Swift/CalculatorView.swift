@@ -22,19 +22,21 @@ struct CalculatorView: View {
     var body: some View {
         ZStack {
             background
-            VStack(spacing: 20) {
-                intervalModeButton
-                inputCluster
-                durationCard(title: "Shooting") {
-                    ShootingDurationPicker(store: store)
+            ScrollView {
+                VStack(spacing: 20) {
+                    intervalModeButton
+                    inputCluster
+                    durationCard(title: "Shooting") {
+                        ShootingDurationPicker(store: store)
+                    }
+                    durationCard(title: "Playback") {
+                        PlaybackDurationPicker(store: store)
+                    }
                 }
-                durationCard(title: "Playback") {
-                    PlaybackDurationPicker(store: store)
-                }
-                Spacer(minLength: 0)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 16)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 16)
+            .scrollDismissesKeyboard(.interactively)
         }
         .preferredColorScheme(.dark)
         .safeAreaInset(edge: .bottom) {
