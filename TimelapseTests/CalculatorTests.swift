@@ -11,34 +11,25 @@ import XCTest
 final class CalculatorTests: XCTestCase {
     func testSettingsCentric120Shots60s25fps() {
         let shooting = Calculator.shootingDuration(shots: 120, interval: 60)
-        XCTAssertEqual(shooting.days, 0)
-        XCTAssertEqual(shooting.hours, 2)
-        XCTAssertEqual(shooting.minutes, 0)
-        XCTAssertEqual(shooting.seconds, 0)
+        XCTAssertEqual(shooting, ShootingDuration(days: 0, hours: 2, minutes: 0, seconds: 0))
 
         let playback = Calculator.playbackDuration(shots: 120, fps: 25)
-        XCTAssertEqual(playback.hours, 0)
-        XCTAssertEqual(playback.minutes, 0)
-        XCTAssertEqual(playback.seconds, 4)
-        XCTAssertEqual(playback.frames, 20)
+        XCTAssertEqual(playback, PlaybackDuration(hours: 0, minutes: 0, seconds: 4, frames: 20))
     }
 
     func testSettingsCentric1500Shots10s30fps() {
         let shooting = Calculator.shootingDuration(shots: 1500, interval: 10)
-        XCTAssertEqual(shooting.days, 0)
-        XCTAssertEqual(shooting.hours, 4)
-        XCTAssertEqual(shooting.minutes, 10)
-        XCTAssertEqual(shooting.seconds, 0)
+        XCTAssertEqual(shooting, ShootingDuration(days: 0, hours: 4, minutes: 10, seconds: 0))
 
         let playback = Calculator.playbackDuration(shots: 1500, fps: 30)
-        XCTAssertEqual(playback.hours, 0)
-        XCTAssertEqual(playback.minutes, 0)
-        XCTAssertEqual(playback.seconds, 50)
-        XCTAssertEqual(playback.frames, 0)
+        XCTAssertEqual(playback, PlaybackDuration(hours: 0, minutes: 0, seconds: 50, frames: 0))
     }
 
     func testShootCentricTwoHoursAt60s25fps() {
-        let shots = Calculator.shotsFromShooting(days: 0, hours: 2, minutes: 0, seconds: 0, interval: 60)
+        let shots = Calculator.shotsFromShooting(
+            ShootingDuration(days: 0, hours: 2, minutes: 0, seconds: 0),
+            interval: 60
+        )
         XCTAssertEqual(shots, 120)
 
         let playback = Calculator.playbackDuration(shots: shots, fps: 25)
@@ -47,7 +38,10 @@ final class CalculatorTests: XCTestCase {
     }
 
     func testPlaybackCentric4s20fAt25fps60s() {
-        let shots = Calculator.shotsFromPlayback(hours: 0, minutes: 0, seconds: 4, frames: 20, fps: 25)
+        let shots = Calculator.shotsFromPlayback(
+            PlaybackDuration(hours: 0, minutes: 0, seconds: 4, frames: 20),
+            fps: 25
+        )
         XCTAssertEqual(shots, 120)
 
         let shooting = Calculator.shootingDuration(shots: shots, interval: 60)
@@ -58,10 +52,7 @@ final class CalculatorTests: XCTestCase {
 
     func testIntervalModeShooting4h10mWith1500Shots() {
         let interval = Calculator.intervalFromShooting(
-            days: 0,
-            hours: 4,
-            minutes: 10,
-            seconds: 0,
+            ShootingDuration(days: 0, hours: 4, minutes: 10, seconds: 0),
             shots: 1500
         )
         XCTAssertEqual(interval, 10)
@@ -69,15 +60,9 @@ final class CalculatorTests: XCTestCase {
 
     func testIntervalModePlayback50sAt30fpsWith4h10mShooting() {
         let result = Calculator.intervalAndShotsFromPlayback(
-            hours: 0,
-            minutes: 0,
-            seconds: 50,
-            frames: 0,
+            PlaybackDuration(hours: 0, minutes: 0, seconds: 50, frames: 0),
             fps: 30,
-            shootingDays: 0,
-            shootingHours: 4,
-            shootingMinutes: 10,
-            shootingSeconds: 0
+            shooting: ShootingDuration(days: 0, hours: 4, minutes: 10, seconds: 0)
         )
         XCTAssertEqual(result.shots, 1500)
         XCTAssertEqual(result.interval, 10)
@@ -119,8 +104,14 @@ final class CalculatorTests: XCTestCase {
         let store = makeStore()
         store.setInterval(60)
         store.setFPS(25)
-        store.setShooting(days: 0, hours: 2, minutes: 0, seconds: 0)
-        XCTAssertEqual(store.shots, Calculator.shotsFromShooting(days: 0, hours: 2, minutes: 0, seconds: 0, interval: 60))
+        store.setShooting(ShootingDuration(days: 0, hours: 2, minutes: 0, seconds: 0))
+        XCTAssertEqual(
+            store.shots,
+            Calculator.shotsFromShooting(
+                ShootingDuration(days: 0, hours: 2, minutes: 0, seconds: 0),
+                interval: 60
+            )
+        )
         XCTAssertEqual(store.shots, 120)
         XCTAssertEqual(store.playback, Calculator.playbackDuration(shots: 120, fps: 25))
     }
@@ -129,8 +120,14 @@ final class CalculatorTests: XCTestCase {
         let store = makeStore()
         store.setInterval(60)
         store.setFPS(25)
-        store.setPlayback(hours: 0, minutes: 0, seconds: 4, frames: 20)
-        XCTAssertEqual(store.shots, Calculator.shotsFromPlayback(hours: 0, minutes: 0, seconds: 4, frames: 20, fps: 25))
+        store.setPlayback(PlaybackDuration(hours: 0, minutes: 0, seconds: 4, frames: 20))
+        XCTAssertEqual(
+            store.shots,
+            Calculator.shotsFromPlayback(
+                PlaybackDuration(hours: 0, minutes: 0, seconds: 4, frames: 20),
+                fps: 25
+            )
+        )
         XCTAssertEqual(store.shots, 120)
         XCTAssertEqual(store.shooting, Calculator.shootingDuration(shots: 120, interval: 60))
     }
@@ -143,17 +140,17 @@ final class CalculatorTests: XCTestCase {
         store.toggleIntervalMode()
         XCTAssertTrue(store.intervalMode)
 
-        store.setShooting(days: 0, hours: 4, minutes: 10, seconds: 0)
+        store.setShooting(ShootingDuration(days: 0, hours: 4, minutes: 10, seconds: 0))
         XCTAssertEqual(store.interval, 10)
 
-        store.setPlayback(hours: 0, minutes: 0, seconds: 50, frames: 0)
+        store.setPlayback(PlaybackDuration(hours: 0, minutes: 0, seconds: 50, frames: 0))
         XCTAssertEqual(store.shots, 1500)
         XCTAssertEqual(store.interval, 10)
     }
 
     func testResetRestoresSavedDefaults() {
         let store = makeStore()
-        store.saveDefaults(interval: 10, shots: 1500, fps: 30, intervalMode: true)
+        store.saveDefaults(SavedDefaults(interval: 10, shots: 1500, fps: 30, intervalMode: true))
         store.setInterval(60)
         store.setShots(120)
         store.setFPS(25)
@@ -164,6 +161,19 @@ final class CalculatorTests: XCTestCase {
         XCTAssertTrue(store.intervalMode)
         XCTAssertEqual(store.shooting, Calculator.shootingDuration(shots: 1500, interval: 10))
         XCTAssertEqual(store.playback, Calculator.playbackDuration(shots: 1500, fps: 30))
+    }
+
+    func testSaveDefaultsAppliesImmediately() {
+        let store = makeStore()
+        store.setInterval(60)
+        store.setShots(120)
+        store.setFPS(25)
+        store.saveDefaults(SavedDefaults(interval: 10, shots: 1500, fps: 30, intervalMode: true))
+        XCTAssertEqual(store.interval, 10)
+        XCTAssertEqual(store.shots, 1500)
+        XCTAssertEqual(store.fps, 30)
+        XCTAssertTrue(store.intervalMode)
+        XCTAssertEqual(store.shooting, Calculator.shootingDuration(shots: 1500, interval: 10))
     }
 
     func testIntervalModePersistsAcrossLaunch() {

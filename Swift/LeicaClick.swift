@@ -68,14 +68,12 @@ enum LeicaClick {
         prepareHapticEngine()
         if supportsHaptics, let engine {
             do {
-                // Start on demand, including after automatic idle shutdown or a reset.
                 try engine.start()
                 let pattern = try hapticPattern(for: kind)
                 let player = try engine.makePlayer(with: pattern)
                 try player.start(atTime: CHHapticTimeImmediate)
                 return
             } catch {
-                // Use UIKit feedback if the engine cannot play this interaction.
             }
         }
         switch kind {
@@ -143,8 +141,6 @@ enum LeicaClick {
         do {
             let hapticEngine = try CHHapticEngine()
             hapticEngine.isAutoShutdownEnabled = true
-            // No players are cached; the next interaction restarts the engine
-            // and creates a fresh player after any stop or reset.
             engine = hapticEngine
         } catch {
             engine = nil

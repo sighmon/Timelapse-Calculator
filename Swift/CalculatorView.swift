@@ -27,10 +27,14 @@ struct CalculatorView: View {
                     intervalModeButton
                     inputCluster
                     durationCard(title: "Shooting") {
-                        ShootingDurationPicker(store: store)
+                        DurationWheels(columns: ShootingDuration.wheels, value: store.shooting) { next in
+                            animate { store.setShooting(next) }
+                        }
                     }
                     durationCard(title: "Playback") {
-                        PlaybackDurationPicker(store: store)
+                        DurationWheels(columns: PlaybackDuration.wheels(fps: store.fps), value: store.playback) { next in
+                            animate { store.setPlayback(next) }
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -42,7 +46,7 @@ struct CalculatorView: View {
         .safeAreaInset(edge: .bottom) {
             toolbar
         }
-        .sheet(isPresented: $showSettings, onDismiss: { store.reset() }) {
+        .sheet(isPresented: $showSettings) {
             SettingsView(store: store)
         }
         .onTapGesture {
@@ -67,12 +71,7 @@ struct CalculatorView: View {
     }
 
     private var intervalModeButton: some View {
-        Button {
-            LeicaClick.playShutter()
-            withAnimation(.snappy(duration: 0.28)) {
-                store.toggleIntervalMode()
-            }
-        } label: {
+        Button(action: toggleIntervalMode) {
             Text(store.intervalMode ? "Interval mode on" : "Interval mode off")
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(store.intervalMode ? .white : .white.opacity(0.45))
@@ -100,25 +99,22 @@ struct CalculatorView: View {
                     value: store.interval,
                     field: .interval,
                     showsIntervalIndicator: true
-                ) { store.setInterval($0) }
+                ) { value in animate { store.setInterval(value) } }
                 .onTapGesture(count: 2) {
-                    LeicaClick.playShutter()
-                    withAnimation(.snappy(duration: 0.28)) {
-                        store.toggleIntervalMode()
-                    }
+                    toggleIntervalMode()
                 }
 
                 numberField(
                     title: "Shots",
                     value: store.shots,
                     field: .shots
-                ) { store.setShots($0) }
+                ) { value in animate { store.setShots(value) } }
 
                 numberField(
                     title: "FPS",
                     value: store.fps,
                     field: .fps
-                ) { store.setFPS($0) }
+                ) { value in animate { store.setFPS(value) } }
             }
         }
     }
@@ -186,11 +182,12 @@ struct CalculatorView: View {
             HStack(spacing: 12) {
                 Button("Reset") {
                     focusedField = nil
-                    store.reset()
+                    animate { store.reset() }
                 }
                 .font(.body.weight(.semibold))
                 .foregroundStyle(.white)
-                .toolbarButtonPadding()
+                .padding(.horizontal, 22)
+                .padding(.vertical, 14)
                 .background(Color.leicaRed, in: Capsule())
                 .buttonStyle(.plain)
 
@@ -202,7 +199,8 @@ struct CalculatorView: View {
                 ) {
                     Image(systemName: "square.and.arrow.up")
                         .font(.body.weight(.semibold))
-                        .toolbarButtonPadding()
+                        .padding(.horizontal, 22)
+                        .padding(.vertical, 14)
                 }
                 .buttonStyle(.plain)
                 .glassEffect(.regular.interactive(), in: .capsule)
@@ -213,7 +211,8 @@ struct CalculatorView: View {
                 } label: {
                     Image(systemName: "info.circle")
                         .font(.body.weight(.semibold))
-                        .toolbarButtonPadding()
+                        .padding(.horizontal, 22)
+                        .padding(.vertical, 14)
                 }
                 .buttonStyle(.plain)
                 .glassEffect(.regular.interactive(), in: .capsule)
@@ -222,75 +221,56 @@ struct CalculatorView: View {
             .padding(.vertical, 12)
         }
     }
-}
 
-private struct ToolbarButtonPadding: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(.horizontal, 22)
-            .padding(.vertical, 14)
+    private func toggleIntervalMode() {
+        LeicaClick.playShutter()
+        withAnimation(.snappy(duration: 0.28)) {
+            store.toggleIntervalMode()
+        }
     }
-}
 
-private extension View {
-    func toolbarButtonPadding() -> some View {
-        modifier(ToolbarButtonPadding())
-    }
-}
-
-private struct ShootingDurationPicker: View {
-    var store: CalculatorStore
-
-    var body: some View {
-        HStack(spacing: 0) {
-            wheel("days", selection: Binding(
-                get: { store.shooting.days },
-                set: { LeicaClick.play(); store.setShooting(days: $0) }
-            ), range: 0..<100)
-            wheel("hours", selection: Binding(
-                get: { store.shooting.hours },
-                set: { LeicaClick.play(); store.setShooting(hours: $0) }
-            ), range: 0..<24)
-            wheel("mins", selection: Binding(
-                get: { store.shooting.minutes },
-                set: { LeicaClick.play(); store.setShooting(minutes: $0) }
-            ), range: 0..<60)
-            wheel("secs", selection: Binding(
-                get: { store.shooting.seconds },
-                set: { LeicaClick.play(); store.setShooting(seconds: $0) }
-            ), range: 0..<60)
+    private func animate(_ updates: () -> Void) {
+        withAnimation(.snappy(duration: 0.42)) {
+            updates()
         }
     }
 }
 
-private struct PlaybackDurationPicker: View {
-    var store: CalculatorStore
+private struct DurationWheelColumn<Value>: Identifiable {
+    let unit: String
+    let range: Range<Int>
+    let keyPath: WritableKeyPath<Value, Int>
+
+    var id: String { unit }
+}
+
+private struct DurationWheels<Value>: View {
+    let columns: [DurationWheelColumn<Value>]
+    let value: Value
+    let onChange: (Value) -> Void
 
     var body: some View {
         HStack(spacing: 0) {
-            wheel("hours", selection: Binding(
-                get: { store.playback.hours },
-                set: { LeicaClick.play(); store.setPlayback(hours: $0) }
-            ), range: 0..<24)
-            wheel("mins", selection: Binding(
-                get: { store.playback.minutes },
-                set: { LeicaClick.play(); store.setPlayback(minutes: $0) }
-            ), range: 0..<60)
-            wheel("secs", selection: Binding(
-                get: { store.playback.seconds },
-                set: { LeicaClick.play(); store.setPlayback(seconds: $0) }
-            ), range: 0..<60)
-            wheel("frames", selection: Binding(
-                get: { min(store.playback.frames, max(store.fps - 1, 0)) },
-                set: { LeicaClick.play(); store.setPlayback(frames: $0) }
-            ), range: store.frameRange)
+            ForEach(columns) { column in
+                wheel(column.unit, range: column.range, value: value[keyPath: column.keyPath]) { newValue in
+                    var next = value
+                    next[keyPath: column.keyPath] = newValue
+                    onChange(next)
+                }
+            }
         }
     }
 }
 
-private func wheel(_ unit: String, selection: Binding<Int>, range: Range<Int>) -> some View {
+private func wheel(_ unit: String, range: Range<Int>, value: Int, onChange: @escaping (Int) -> Void) -> some View {
     VStack(spacing: 2) {
-        Picker(unit, selection: selection) {
+        Picker(unit, selection: Binding(
+            get: { value },
+            set: { newValue in
+                LeicaClick.play()
+                onChange(newValue)
+            }
+        )) {
             ForEach(Array(range), id: \.self) { value in
                 Text("\(value)")
                     .tag(value)
@@ -306,6 +286,28 @@ private func wheel(_ unit: String, selection: Binding<Int>, range: Range<Int>) -
             .frame(maxWidth: .infinity)
     }
     .frame(maxWidth: .infinity)
+}
+
+private extension ShootingDuration {
+    static var wheels: [DurationWheelColumn<ShootingDuration>] {
+        [
+            DurationWheelColumn(unit: "days", range: 0..<100, keyPath: \.days),
+            DurationWheelColumn(unit: "hours", range: 0..<24, keyPath: \.hours),
+            DurationWheelColumn(unit: "mins", range: 0..<60, keyPath: \.minutes),
+            DurationWheelColumn(unit: "secs", range: 0..<60, keyPath: \.seconds)
+        ]
+    }
+}
+
+private extension PlaybackDuration {
+    static func wheels(fps: Int) -> [DurationWheelColumn<PlaybackDuration>] {
+        [
+            DurationWheelColumn(unit: "hours", range: 0..<24, keyPath: \.hours),
+            DurationWheelColumn(unit: "mins", range: 0..<60, keyPath: \.minutes),
+            DurationWheelColumn(unit: "secs", range: 0..<60, keyPath: \.seconds),
+            DurationWheelColumn(unit: "frames", range: fps > 0 ? 0..<fps : 0..<1, keyPath: \.frames)
+        ]
+    }
 }
 
 #Preview("Calculator") {

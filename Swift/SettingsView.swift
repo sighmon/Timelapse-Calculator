@@ -8,11 +8,7 @@ import SwiftUI
 struct SettingsView: View {
     var store: CalculatorStore
     @Environment(\.dismiss) private var dismiss
-
-    @State private var interval: Int = 60
-    @State private var shots: Int = 1500
-    @State private var fps: Int = 25
-    @State private var intervalMode: Bool = false
+    @State private var draft = SavedDefaults.fallback
 
     var body: some View {
         NavigationStack {
@@ -30,7 +26,9 @@ struct SettingsView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        persist()
+                        withAnimation(.snappy(duration: 0.42)) {
+                            store.saveDefaults(draft)
+                        }
                         dismiss()
                     }
                     .buttonStyle(.glassProminent)
@@ -38,13 +36,8 @@ struct SettingsView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .interactiveDismissDisabled()
         .onAppear {
-            let saved = store.loadSavedDefaults()
-            interval = saved.interval
-            shots = saved.shots
-            fps = saved.fps
-            intervalMode = saved.intervalMode
+            draft = store.savedDefaults
         }
     }
 
@@ -52,10 +45,10 @@ struct SettingsView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Default settings")
                 .font(.headline)
-            defaultField("Interval", value: $interval)
-            defaultField("Shots", value: $shots)
-            defaultField("FPS", value: $fps)
-            Toggle("Interval Calculations", isOn: $intervalMode)
+            defaultField("Interval", value: $draft.interval)
+            defaultField("Shots", value: $draft.shots)
+            defaultField("FPS", value: $draft.fps)
+            Toggle("Interval Calculations", isOn: $draft.intervalMode)
                 .tint(.red)
         }
         .padding(18)
@@ -139,10 +132,6 @@ struct SettingsView: View {
         let version = info?["CFBundleShortVersionString"] as? String ?? "1.3"
         let build = info?["CFBundleVersion"] as? String ?? "9"
         return "Version \(version) (\(build))"
-    }
-
-    private func persist() {
-        store.saveDefaults(interval: interval, shots: shots, fps: fps, intervalMode: intervalMode)
     }
 }
 

@@ -2,8 +2,6 @@
 //  Calculator.swift
 //  Timelapse
 //
-//  Integer calculator extracted from MainViewController.m (Dan Thompson / Simon Loffler).
-//
 
 import Foundation
 
@@ -27,6 +25,14 @@ struct PlaybackDuration: Equatable {
     var frames: Int
 
     static let zero = PlaybackDuration(hours: 0, minutes: 0, seconds: 0, frames: 0)
+
+    var totalSeconds: Int {
+        (hours * 60 * 60) + (minutes * 60) + seconds
+    }
+
+    func shotCount(fps: Int) -> Int {
+        (hours * (60 * 60 * fps)) + (minutes * (60 * fps)) + (seconds * fps) + frames
+    }
 }
 
 enum Calculator {
@@ -35,15 +41,11 @@ enum Calculator {
         let totalRealSeconds = shots * interval
         let totalRealMinutes = totalRealSeconds / 60
         let totalRealHours = totalRealMinutes / 60
-        let totalRealDays = totalRealHours / 24
-        let totalRealHoursRemainder = totalRealHours % 24
-        let totalRealMinutesRemainder = totalRealMinutes % 60
-        let totalRealSecondsRemainder = totalRealSeconds % 60
         return ShootingDuration(
-            days: totalRealDays,
-            hours: totalRealHoursRemainder,
-            minutes: totalRealMinutesRemainder,
-            seconds: totalRealSecondsRemainder
+            days: totalRealHours / 24,
+            hours: totalRealHours % 24,
+            minutes: totalRealMinutes % 60,
+            seconds: totalRealSeconds % 60
         )
     }
 
@@ -51,79 +53,56 @@ enum Calculator {
         guard fps > 0 else { return .zero }
         let totalPlaybackSeconds = shots / fps
         let totalPlaybackMinutes = totalPlaybackSeconds / 60
-        let totalPlaybackHours = totalPlaybackMinutes / 60
-        let totalPlaybackMinutesRemainder = totalPlaybackMinutes % 60
-        let totalPlaybackSecondsRemainder = totalPlaybackSeconds % 60
-        let totalPlaybackFrames = shots % fps
         return PlaybackDuration(
-            hours: totalPlaybackHours,
-            minutes: totalPlaybackMinutesRemainder,
-            seconds: totalPlaybackSecondsRemainder,
-            frames: totalPlaybackFrames
+            hours: totalPlaybackMinutes / 60,
+            minutes: totalPlaybackMinutes % 60,
+            seconds: totalPlaybackSeconds % 60,
+            frames: shots % fps
         )
     }
 
-    static func shotsFromShooting(days: Int, hours: Int, minutes: Int, seconds: Int, interval: Int) -> Int {
+    static func shotsFromShooting(_ shooting: ShootingDuration, interval: Int) -> Int {
         guard interval > 0 else { return 0 }
-        let secondsTotal = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60) + seconds
-        return secondsTotal / interval
+        return shooting.totalSeconds / interval
     }
 
-    static func shotsFromPlayback(hours: Int, minutes: Int, seconds: Int, frames: Int, fps: Int) -> Int {
-        (hours * (60 * 60 * fps)) + (minutes * (60 * fps)) + (seconds * fps) + frames
+    static func shotsFromPlayback(_ playback: PlaybackDuration, fps: Int) -> Int {
+        playback.shotCount(fps: fps)
     }
 
-    static func intervalFromShooting(days: Int, hours: Int, minutes: Int, seconds: Int, shots: Int) -> Int {
+    static func intervalFromShooting(_ shooting: ShootingDuration, shots: Int) -> Int {
         guard shots > 0 else { return 0 }
-        let secondsTotal = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60) + seconds
-        return secondsTotal / shots
+        return shooting.totalSeconds / shots
     }
 
+    /// Interval-mode playback uses whole seconds × fps and ignores leftover frames,
+    /// matching the original calculator.
     static func intervalAndShotsFromPlayback(
-        hours: Int,
-        minutes: Int,
-        seconds: Int,
-        frames: Int,
+        _ playback: PlaybackDuration,
         fps: Int,
-        shootingDays: Int,
-        shootingHours: Int,
-        shootingMinutes: Int,
-        shootingSeconds: Int
+        shooting: ShootingDuration
     ) -> (shots: Int, interval: Int) {
-        let totalPlaybackSeconds = (hours * 60 * 60) + (minutes * 60) + seconds
-        let shots = totalPlaybackSeconds * fps
-        let totalShootingSeconds = (shootingDays * 24 * 60 * 60) + (shootingHours * 60 * 60) + (shootingMinutes * 60) + shootingSeconds
-        let interval = shots > 0 ? totalShootingSeconds / shots : 0
+        let shots = playback.totalSeconds * fps
+        let interval = shots > 0 ? shooting.totalSeconds / shots : 0
         return (shots, interval)
     }
 
-    static func phrase(days: Int, hours: Int, minutes: Int, seconds: Int, frames: Int) -> String {
-        var result = ""
-        var comma = false
+    static func phrase(_ shooting: ShootingDuration) -> String {
+        join([
+            unit(shooting.days, "day"),
+            unit(shooting.hours, "hour"),
+            unit(shooting.minutes, "minute"),
+            unit(shooting.seconds, "second")
+        ])
+    }
 
-        if days > 0 {
-            result += "\(days) day\(days == 1 ? "" : "s")"
-            comma = true
-        }
-        if hours > 0 {
-            let and = minutes == 0 && seconds == 0 && frames == 0
-            result += "\(comma ? (and ? " and " : ", ") : "")\(hours) hour\(hours == 1 ? "" : "s")"
-            comma = true
-        }
-        if minutes > 0 {
-            let and = seconds == 0 && frames == 0
-            result += "\(comma ? (and ? " and " : ", ") : "")\(minutes) minute\(minutes == 1 ? "" : "s")"
-            comma = true
-        }
-        if seconds > 0 {
-            let and = frames == 0
-            result += "\(comma ? (and ? " and " : ", ") : "")\(seconds) second\(seconds == 1 ? "" : "s")"
-            comma = true
-        }
-        if frames > 0 {
-            result += "\(comma ? " and " : "")\(frames) frame\(frames == 1 ? "" : "s")"
-        }
-        return result
+    static func phrase(_ playback: PlaybackDuration) -> String {
+        join([
+            unit(playback.hours, "hour"),
+            unit(playback.minutes, "minute"),
+            unit(playback.seconds, "second"),
+            unit(playback.frames, "frame")
+        ])
     }
 
     static func shareSummary(
@@ -133,20 +112,23 @@ enum Calculator {
         shooting: ShootingDuration,
         playback: PlaybackDuration
     ) -> String {
-        let shootingPhrase = phrase(
-            days: shooting.days,
-            hours: shooting.hours,
-            minutes: shooting.minutes,
-            seconds: shooting.seconds,
-            frames: 0
-        )
-        let playbackPhrase = phrase(
-            days: 0,
-            hours: playback.hours,
-            minutes: playback.minutes,
-            seconds: playback.seconds,
-            frames: playback.frames
-        )
-        return "Shooting duration of \(shots) shots at an interval of \(interval) seconds will be \(shootingPhrase). \n\nPlayback duration of \(shots) shots at \(fps) frames per second will be \(playbackPhrase)."
+        "Shooting duration of \(shots) shots at an interval of \(interval) seconds will be \(phrase(shooting)). \n\nPlayback duration of \(shots) shots at \(fps) frames per second will be \(phrase(playback))."
+    }
+
+    private static func unit(_ value: Int, _ name: String) -> String? {
+        guard value > 0 else { return nil }
+        return "\(value) \(name)\(value == 1 ? "" : "s")"
+    }
+
+    private static func join(_ parts: [String?]) -> String {
+        let parts = parts.compactMap { $0 }
+        switch parts.count {
+        case 0:
+            return ""
+        case 1:
+            return parts[0]
+        default:
+            return parts.dropLast().joined(separator: ", ") + " and " + parts[parts.count - 1]
+        }
     }
 }

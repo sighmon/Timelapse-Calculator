@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052EE1ED12E013D800292760 /* si.png in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1EB12E013D800292760 /* si.png */; };
 		0590341612F1372F00B76180 /* pix.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590341412F1372F00B76180 /* pix.png */; };
 		0590341712F1372F00B76180 /* dan.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590341512F1372F00B76180 /* dan.png */; };
 		0590343B12F13E2900B76180 /* dan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590343912F13E2900B76180 /* dan@2x.png */; };
 		0590343C12F13E2900B76180 /* pix@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590343A12F13E2900B76180 /* pix@2x.png */; };
-		052EE1ED12E013D800292760 /* si.png in Resources */ = {isa = PBXBuildFile; fileRef = 052EE1EB12E013D800292760 /* si.png */; };
 		0590344212F13E3900B76180 /* si@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0590344012F13E3900B76180 /* si@2x.png */; };
 		A11C4C020000000000000001 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000001 /* Calculator.swift */; };
 		A11C4C020000000000000002 /* CalculatorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C4C010000000000000002 /* CalculatorStore.swift */; };
