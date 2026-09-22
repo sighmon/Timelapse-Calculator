@@ -84,7 +84,7 @@ struct CalculatorView: View {
                 }
         }
         .buttonStyle(.plain)
-        .glassEffect(store.intervalMode ? .identity : .regular.interactive(), in: .capsule)
+        .adaptiveGlass(in: Capsule(), enabled: !store.intervalMode)
         .fixedSize()
         .frame(maxWidth: .infinity)
         .accessibilityLabel("Interval mode")
@@ -92,7 +92,7 @@ struct CalculatorView: View {
     }
 
     private var inputCluster: some View {
-        GlassEffectContainer(spacing: 20) {
+        AdaptiveGlassContainer(spacing: 20) {
             HStack(spacing: 12) {
                 numberField(
                     title: "Interval",
@@ -151,11 +151,9 @@ struct CalculatorView: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 14)
         .padding(.horizontal, 8)
-        .glassEffect(
-            store.intervalMode && showsIntervalIndicator
-                ? .regular.tint(.leicaRed.opacity(0.7)).interactive()
-                : .regular.interactive(),
-            in: .rect(cornerRadius: 22)
+        .adaptiveGlass(
+            in: RoundedRectangle(cornerRadius: 22),
+            tint: store.intervalMode && showsIntervalIndicator ? .leicaRed.opacity(0.7) : nil
         )
     }
 
@@ -174,11 +172,11 @@ struct CalculatorView: View {
         .padding(.horizontal, 12)
         .padding(.top, 16)
         .padding(.bottom, 10)
-        .glassEffect(.regular.interactive(), in: .rect(cornerRadius: 28))
+        .adaptiveGlass(in: RoundedRectangle(cornerRadius: 28))
     }
 
     private var toolbar: some View {
-        GlassEffectContainer(spacing: 16) {
+        AdaptiveGlassContainer(spacing: 16) {
             HStack(spacing: 12) {
                 Button("Reset") {
                     focusedField = nil
@@ -203,7 +201,7 @@ struct CalculatorView: View {
                         .padding(.vertical, 14)
                 }
                 .buttonStyle(.plain)
-                .glassEffect(.regular.interactive(), in: .capsule)
+                .adaptiveGlass(in: Capsule())
 
                 Button {
                     focusedField = nil
@@ -215,7 +213,7 @@ struct CalculatorView: View {
                         .padding(.vertical, 14)
                 }
                 .buttonStyle(.plain)
-                .glassEffect(.regular.interactive(), in: .capsule)
+                .adaptiveGlass(in: Capsule())
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 12)

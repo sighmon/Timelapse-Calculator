@@ -4,6 +4,8 @@
 
 [Website](https://sighmon.com/timelapse-helper)
 
+Requires iOS 17 or later. Uses Liquid Glass on iOS 26 and later, with material backgrounds on earlier versions.
+
 ## What's New?
 
 Version 2.0

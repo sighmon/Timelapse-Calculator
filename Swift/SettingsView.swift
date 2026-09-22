@@ -31,7 +31,7 @@ struct SettingsView: View {
                         }
                         dismiss()
                     }
-                    .buttonStyle(.glassProminent)
+                    .adaptiveProminentButtonStyle()
                 }
             }
         }
@@ -53,7 +53,7 @@ struct SettingsView: View {
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .glassEffect(.regular, in: .rect(cornerRadius: 28))
+        .adaptiveGlass(in: RoundedRectangle(cornerRadius: 28), interactive: false)
     }
 
     private func defaultField(_ title: String, value: Binding<Int>) -> some View {
@@ -87,7 +87,7 @@ struct SettingsView: View {
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .glassEffect(.regular, in: .rect(cornerRadius: 28))
+        .adaptiveGlass(in: RoundedRectangle(cornerRadius: 28), interactive: false)
     }
 
     private func creditRow(image: String, name: String, detail: String, url: String) -> some View {
