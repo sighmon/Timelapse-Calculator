@@ -14,38 +14,48 @@ struct CalculatorView: View {
     @State private var store = CalculatorStore()
     @State private var showSettings = false
     @FocusState private var focusedField: Field?
+    @ScaledMetric(relativeTo: .caption) private var minimumDurationWheelWidth = 54
 
     private enum Field: Hashable {
         case interval, shots, fps
     }
 
     var body: some View {
-        ZStack {
-            background
-            ScrollView {
-                VStack(spacing: 20) {
-                    intervalModeButton
-                    inputCluster
-                    durationCard(title: "Shooting") {
-                        DurationWheels(columns: ShootingDuration.wheels, value: store.shooting) { next in
-                            animate { store.setShooting(next) }
+        GeometryReader { geometry in
+            // Use the window width so iPad multitasking adapts like a phone
+            // when the available space becomes compact.
+            let usesWideLayout = geometry.size.width >= 600
+            let contentWidth = usesWideLayout ? geometry.size.width * 0.6 : geometry.size.width
+            // Account for the outer padding, card spacing, and each card's
+            // horizontal padding before fitting four wheels into each card.
+            let minimumCardWidth = 4 * minimumDurationWheelWidth + 24
+            let cardsFitSideBySide = usesWideLayout
+                && contentWidth - 40 >= 2 * minimumCardWidth + 20
+
+            ZStack {
+                background
+                GeometryReader { viewport in
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            intervalModeButton
+                            inputCluster
+                            durationCards(sideBySide: cardsFitSideBySide)
                         }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 16)
+                        .frame(width: contentWidth)
+                        .frame(maxWidth: .infinity, minHeight: viewport.size.height)
                     }
-                    durationCard(title: "Playback") {
-                        DurationWheels(columns: PlaybackDuration.wheels(fps: store.fps), value: store.playback) { next in
-                            animate { store.setPlayback(next) }
-                        }
-                    }
+                    .scrollDismissesKeyboard(.interactively)
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 16)
             }
-            .scrollDismissesKeyboard(.interactively)
+            .safeAreaInset(edge: .bottom) {
+                toolbar
+                    .frame(width: contentWidth)
+                    .frame(maxWidth: .infinity)
+            }
         }
         .preferredColorScheme(.dark)
-        .safeAreaInset(edge: .bottom) {
-            toolbar
-        }
         .sheet(isPresented: $showSettings) {
             SettingsView(store: store)
         }
@@ -54,6 +64,25 @@ struct CalculatorView: View {
         }
         .onAppear {
             LeicaClick.prepare()
+        }
+    }
+
+    private func durationCards(sideBySide: Bool) -> some View {
+        let layout = sideBySide
+            ? AnyLayout(HStackLayout(spacing: 20))
+            : AnyLayout(VStackLayout(spacing: 20))
+
+        return layout {
+            durationCard(title: "Shooting") {
+                DurationWheels(columns: ShootingDuration.wheels, value: store.shooting) { next in
+                    animate { store.setShooting(next) }
+                }
+            }
+            durationCard(title: "Playback") {
+                DurationWheels(columns: PlaybackDuration.wheels(fps: store.fps), value: store.playback) { next in
+                    animate { store.setPlayback(next) }
+                }
+            }
         }
     }
 
