@@ -45,6 +45,13 @@ struct CalculatorView: View {
                         .padding(.vertical, 16)
                         .frame(width: contentWidth)
                         .frame(maxWidth: .infinity, minHeight: viewport.size.height)
+                        .background {
+                            Color.clear
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    focusedField = nil
+                                }
+                        }
                     }
                     .scrollDismissesKeyboard(.interactively)
                 }
@@ -58,9 +65,6 @@ struct CalculatorView: View {
         .preferredColorScheme(.dark)
         .sheet(isPresented: $showSettings) {
             SettingsView(store: store)
-        }
-        .onTapGesture {
-            focusedField = nil
         }
         .onAppear {
             LeicaClick.prepare()
@@ -228,6 +232,7 @@ struct CalculatorView: View {
                         .font(.body.weight(.semibold))
                         .padding(.horizontal, 22)
                         .padding(.vertical, 14)
+                        .contentShape(Capsule())
                 }
                 .buttonStyle(.plain)
                 .adaptiveGlass(in: Capsule())
@@ -240,6 +245,7 @@ struct CalculatorView: View {
                         .font(.body.weight(.semibold))
                         .padding(.horizontal, 22)
                         .padding(.vertical, 14)
+                        .contentShape(Capsule())
                 }
                 .buttonStyle(.plain)
                 .adaptiveGlass(in: Capsule())
